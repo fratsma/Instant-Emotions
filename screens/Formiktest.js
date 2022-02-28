@@ -16,14 +16,15 @@ import { getCurrentTimestamp } from 'react-native/Libraries/Utilities/createPerf
 // import { utils } from '@react-native-firebase/app';
 // import storage from '@react-native-firebase/storage';
 // import App from '../App';
+import App from '../App';
 
 // import database from '@react-native-firebase/database';
-import { getDatabase, ref, onValue, set, get, child, Database, connectDatabaseEmulator, push } from 'firebase/database';
+import { getDatabase, ref, onValue, set, get, child, Database, connectDatabaseEmulator, push,  } from 'firebase/database';
 // import { ref as sRef } from 'firebase/storage';
 
 function storeData(values){
     const db = getDatabase();
-    const reference = ref(db, 'users/' + '1');
+    const reference = ref(db, 'users/' + uid);
     push(reference,  {
         entry: values
     });

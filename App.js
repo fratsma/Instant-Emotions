@@ -7,6 +7,7 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 // import UserLogin from './screens/UserLogin';
 // import { registerRootComponent } from 'expo';
+import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 
 
 
@@ -25,6 +26,31 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
+
+const auth = getAuth();
+signInAnonymously(auth)
+  .then(() => {
+    console.log("SIGNED IN")
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ...
+  });
+
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    console.log(user.uid)
+  } else {
+    // User is signed out
+    // ...
+    console.log("error")
+  }
+});
 
 // if(!firebaseConfig.apps.length){
 //   initializeApp(firebaseConfig)
