@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native';
@@ -15,20 +15,21 @@ import { getCurrentTimestamp } from 'react-native/Libraries/Utilities/createPerf
 // import { initializeApp } from "firebase/app";
 // import { utils } from '@react-native-firebase/app';
 // import storage from '@react-native-firebase/storage';
-// import App from '../App';
-import App from '../App';
+
 
 // import database from '@react-native-firebase/database';
 import { getDatabase, ref, onValue, set, get, child, Database, connectDatabaseEmulator, push,  } from 'firebase/database';
+import App from '../App';
 // import { ref as sRef } from 'firebase/storage';
 
-function storeData(values){
+function storeData(values, {resetForm}){
     const db = getDatabase();
-    const reference = ref(db, 'users/' + uid);
+    const reference = ref(db, 'users/' + global.uid);
     push(reference,  {
         entry: values
     });
     console.log('dataset')
+    resetForm();
 }
 
 // function storeData(values){
@@ -602,21 +603,21 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: colours.green,
         textAlign: 'center',
-        fontFamily: 'Arial-BoldMT'
+        fontFamily: 'KohinoorBangla-Semibold'
     },
 
     straight:{
         fontSize: 12,
         color: colours.grey,
         textAlign: 'center',
-        fontFamily: 'Arial-BoldMT'
+        fontFamily: 'KohinoorBangla-Semibold'
     },
 
     sad:{
         fontSize: 12,
         color: colours.red,
         textAlign: 'center',
-        fontFamily: 'Arial-BoldMT'
+        fontFamily: 'KohinoorBangla-Semibold'
     },
 
     mainText:{
@@ -625,7 +626,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
-        fontFamily: 'Arial-BoldMT'
+        // fontFamily: 'Arial-BoldMT'
+        // fontFamily: 'Helvetica Neue'
+        fontFamily: 'Kohinoor Bangla'
         
     },
 
@@ -635,7 +638,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
-        fontFamily: 'Arial-BoldMT',
+        fontFamily: 'Kohinoor Bangla',
         paddingHorizontal: 20,
         
     },

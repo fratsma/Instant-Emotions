@@ -8,6 +8,7 @@ import { getDatabase } from "firebase/database";
 // import UserLogin from './screens/UserLogin';
 // import { registerRootComponent } from 'expo';
 import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
+import Analytics from "./screens/Analytics";
 
 
 
@@ -44,6 +45,7 @@ onAuthStateChanged(auth, (user) => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     const uid = user.uid;
+    global.uid = uid
     console.log(user.uid)
   } else {
     // User is signed out
@@ -60,6 +62,6 @@ onAuthStateChanged(auth, (user) => {
 
 export default function App() {
 
-  return<Formiktest/>
+  return<Analytics/>
   // return <Text>Hey</Text>
 }
