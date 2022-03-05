@@ -12,8 +12,6 @@ function getData(props){
     onValue(getEmotions, (snapshot)=>{
         var data = snapshot.val();
 
-
-
         for (const value of Object.values(data)) {
             console.log(value["entry"]["feeling"])
           }
