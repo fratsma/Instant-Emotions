@@ -1,7 +1,7 @@
 // import { StatusBar } from 'expo-status-bar';
 // import { StyleSheet, Text, View } from 'react-native';
 // import AppHome from './screens/AppHome';
-import React from "react";
+import React, {useState} from "react";
 import Formiktest from './screens/Formiktest';
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
@@ -9,6 +9,9 @@ import { getDatabase } from "firebase/database";
 // import { registerRootComponent } from 'expo';
 import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
 import Analytics from "./screens/Analytics";
+import { NavigationContainer } from '@react-navigation/native';
+import AuthNavigator from "./navigation/AuthNavigator";
+import AppNavigator from "./navigation/AppNavigator";
 
 
 
@@ -54,14 +57,26 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+
+
 // if(!firebaseConfig.apps.length){
 //   initializeApp(firebaseConfig)
 // }
 
 
 
-export default function App() {
+  
 
-  return<Analytics/>
+export default function App() {
+  return(
+    <NavigationContainer>
+      <AppNavigator/>
+    </NavigationContainer>
+
+    
+
+
+)
+  // return<Formiktest/>
   // return <Text>Hey</Text>
 }

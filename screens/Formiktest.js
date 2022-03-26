@@ -10,6 +10,12 @@ import Screen from '../components/Screen';
 import colours from '../config/colours';
 import { Formik, Field, Form } from 'formik';
 import { getCurrentTimestamp } from 'react-native/Libraries/Utilities/createPerformanceLogger';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Moment from 'moment';
+import {getImage} from '../config/images'
+import DailyView from '../components/DailyView';
+
+
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // import { initializeApp } from "firebase/app";
@@ -71,12 +77,51 @@ function storeData(values, {resetForm}){
 // //         }
 // //     })
 // // }
+
+
     
 
 function Formiktest(props) {
+    // const db = getDatabase();
+    // const getEmotions = ref(db, 'users/' + global.uid);
+    // onValue(getEmotions, (snapshot)=>{
+    //     var data = snapshot.val();
+
+    //     for (const value of Object.values(data)) {
+    //         console.log(value["entry"]["feeling"])
+    //       }
+
+    //     const numEntries = Object.keys(data).length
+    //     console.log(numEntries)
+
+    //     console.log(Object.values(data)[0]["entry"]["reason"])
+    //     global.item1Emotion = Object.values(data)[numEntries-1]["entry"]["feeling"]
+    //     global.item1Reason = Object.values(data)[numEntries-1]["entry"]["reason"]
+    //     global.item1Mood = Object.values(data)[numEntries-1]["entry"]["mood"]
+    //     global.item1Time = Object.values(data)[numEntries-1]["entry"]["time"]
+    //     global.item1Time = Moment(global.item1Time).format('D MMM YYYY - h:mma ')
+    //     global.item1Image = getImage(global.item1Emotion)
+
+
+    //     item2Emotion = Object.values(data)[numEntries-2]["entry"]["feeling"]
+    //     item2Reason = Object.values(data)[numEntries-2]["entry"]["reason"]
+    //     item2Mood = Object.values(data)[numEntries-2]["entry"]["mood"]
+    //     item2Time = Object.values(data)[numEntries-2]["entry"]["time"]
+
+    //     item2Time = Moment(item2Time).format('D MMM YYYY - h:mma ')
+    //     item2Image = getImage(item2Emotion)
+
+
+        
+
+    // })
+
+    
+
     return (
         <Screen style={styles.background}>
             <Text style={styles.mainText}>Instant Emotions</Text>
+
 
 
             <Formik
@@ -101,7 +146,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "happy")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/happy.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Happy</Text>
                     
@@ -110,7 +155,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "excited")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/excited.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Excited</Text>
                     
@@ -119,7 +164,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "amazed")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/amazed.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Amazed</Text>
                     
@@ -128,7 +173,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "love")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/love.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Love</Text>
                     
@@ -147,7 +192,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "amused")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/amused.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Amused</Text>
                     
@@ -156,7 +201,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "admiration")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/admiration.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Admiration</Text>
                     
@@ -165,7 +210,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "nostalgic")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/nostalgic.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Nostalgic</Text>
                     
@@ -174,7 +219,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "rested")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/rested.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Rested</Text>
                     
@@ -191,7 +236,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "passionate")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/passionate.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Passionate</Text>
                     
@@ -200,7 +245,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "relieved")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/relieved.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Relieved</Text>
                     
@@ -209,7 +254,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "blissful")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/blissful.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Blissful</Text>
                     
@@ -218,7 +263,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "proud")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/proud.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Proud</Text>
                     
@@ -236,7 +281,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "content")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/content.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Content</Text>
     
@@ -245,7 +290,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "meh")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/meh.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Meh</Text>
     
@@ -254,7 +299,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "emotional")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/emotional.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Emotional</Text>
     
@@ -263,7 +308,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "confused")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/confused.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Confused</Text>
     
@@ -280,7 +325,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "hungry")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/hungry.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Hungry</Text>
     
@@ -289,7 +334,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "awkward")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/awkward.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Awkward</Text>
     
@@ -298,7 +343,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "tired")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/tired2.jpg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Tired</Text>
     
@@ -307,7 +352,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "shy")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/shy.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Shy</Text>
     
@@ -325,7 +370,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "shocked")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/shocked.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Shocked</Text>
     
@@ -334,7 +379,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "depend")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/dependable.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Depend</Text>
     
@@ -343,7 +388,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "sympathetic")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/sympathetic.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Sympathy</Text>
     
@@ -352,7 +397,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "guilty")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/guilty.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.straight}>Guilty</Text>
     
@@ -369,7 +414,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "upset")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/upset.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Upset</Text>
     
@@ -378,7 +423,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "sad")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/sad.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Sad</Text>
     
@@ -387,7 +432,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "scared")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/scared.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Scared</Text>
     
@@ -396,7 +441,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "stressed")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/stressed.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Stressed</Text>
     
@@ -412,7 +457,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "anxious")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/anxious.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Anxious</Text>
     
@@ -421,7 +466,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "unwell")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/unwell.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Unwell</Text>
     
@@ -430,7 +475,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "annoyed")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/annoyed.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Annoyed</Text>
     
@@ -439,7 +484,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "frustrated")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/frustrated.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Frustrated</Text>
     
@@ -456,7 +501,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "disappointed")}>
-                                <Image style={styles.emotions} source={require('../assets/confused.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/disappointed.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Disappointed</Text>
     
@@ -465,7 +510,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "overwhelmed")}>
-                                <Image style={styles.emotions} source={require('../assets/anxious.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/overwhelmed.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Overwhelmed</Text>
     
@@ -474,7 +519,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "jealous")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/jealous.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Jealous</Text>
     
@@ -483,7 +528,7 @@ function Formiktest(props) {
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
                             onPress={() => setFieldValue("feeling", "humiliated")}>
-                                <Image style={styles.emotions} source={require('../assets/amazing.png')}/>
+                                <Image style={styles.emotions} source={require('../assets/humiliated.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Humilated</Text>
     
@@ -505,6 +550,7 @@ function Formiktest(props) {
                     <TextInput 
                         style={styles.input}
                         onChangeText={handleChange("reason")}
+                        maxLength={19}
                         
                     />
                 </View>
@@ -577,12 +623,7 @@ function Formiktest(props) {
 
             
             
-                
-
-
-            <Text style={styles.mainText}>Navigation Bar</Text>
-
-
+            
         </Screen>
     );
 }
@@ -595,29 +636,32 @@ const styles = StyleSheet.create({
     },
 
     emotions:{
-        width: 65,
-        height: 65,
+        width: 70,
+        height: 70,
     },
 
     happy:{
         fontSize: 12,
         color: colours.green,
         textAlign: 'center',
-        fontFamily: 'KohinoorBangla-Semibold'
+        fontFamily: 'KohinoorBangla-Semibold',
+        paddingTop: 3
     },
 
     straight:{
         fontSize: 12,
         color: colours.grey,
         textAlign: 'center',
-        fontFamily: 'KohinoorBangla-Semibold'
+        fontFamily: 'KohinoorBangla-Semibold',
+        paddingTop: 3
     },
 
     sad:{
         fontSize: 12,
         color: colours.red,
         textAlign: 'center',
-        fontFamily: 'KohinoorBangla-Semibold'
+        fontFamily: 'KohinoorBangla-Semibold',
+        paddingTop: 3
     },
 
     mainText:{
@@ -648,7 +692,8 @@ const styles = StyleSheet.create({
     },
 
     scroller:{
-        paddingTop: 40
+        paddingTop: 40,
+        backgroundColor: colours.white,
         
     },
 

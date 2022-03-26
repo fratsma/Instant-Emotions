@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import colours from '../config/colours';
 
@@ -20,15 +20,16 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 15,
-        width: '70%',
+        padding: 10,
+        width: '50%',
         marginVertical: 10
     },
 
     text:{
         color: colours.white,
-        fontSize: 25,
+        fontSize: 17,
         // textTransform: 'uppercase',
+        fontFamily: 'Kohinoor Bangla',
         fontWeight: 'bold',
     }
 })
