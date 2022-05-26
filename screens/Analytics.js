@@ -14,72 +14,139 @@ import Formiktest from './Formiktest';
 import AppButton from '../components/AppButton';
 
 
+// async function getData() {
+//     const dbRef = ref(getDatabase());
+//     // get(child(dbRef, getEmotions)).then((snapshot)=>{
+//     var getData = await get(child(dbRef, `users/${global.uid}`))
+//     // return "hey"
+
+//     getData.then((snapshot) => {
+//         if(snapshot.exists()){
+//             var data = snapshot.val();
+//             console.log(data);
+//             const numEntries = Object.keys(data).length
+//             console.log(numEntries)
+
+//             var info
+//             console.log(Object.values(data)[0]["entry"]["reason"])
+//             global.item1Emotion = Object.values(data)[numEntries-1]["entry"]["feeling"]
+//             global.item1Reason = Object.values(data)[numEntries-1]["entry"]["reason"]
+//             global.item1Mood = Object.values(data)[numEntries-1]["entry"]["mood"]
+//             global.item1Time = Object.values(data)[numEntries-1]["entry"]["time"]
+//             global.item1Time = Moment(global.item1Time).format('D MMM YYYY - h:mma ')
+//             global.item1Image = getImage(global.item1Emotion)
+
+            
+//             global.item2Emotion = Object.values(data)[numEntries-2]["entry"]["feeling"]
+//             global.item2Reason = Object.values(data)[numEntries-2]["entry"]["reason"]
+//             global.item2Mood = Object.values(data)[numEntries-2]["entry"]["mood"]
+//             global.item2Time = Object.values(data)[numEntries-2]["entry"]["time"]
+//             global.item2Time = Moment(global.item2Time).format('D MMM YYYY - h:mma ')
+//             global.item2Image = getImage(global.item2Emotion)
+
+
+//             global.item3Emotion = Object.values(data)[numEntries-3]["entry"]["feeling"]
+//             global.item3Reason = Object.values(data)[numEntries-3]["entry"]["reason"]
+//             global.item3Mood = Object.values(data)[numEntries-3]["entry"]["mood"]
+//             global.item3Time = Object.values(data)[numEntries-3]["entry"]["time"]
+//             global.item3Time = Moment(global.item3Time).format('D MMM YYYY - h:mma ')
+//             global.item3Image = getImage(global.item3Emotion)
+
+//         } else {
+//             console.log("No data available")
+//         }
+//     }).catch((error) =>{
+//         console.log(error)
+//     })
+//     return "hello"
+
+// }
+
+
 function Analytics(props) {
 
 
-    const [setEmotion, Emotion] = useState();
-    const [value, setValue] = useState(0);
-    const [update, setUpdate] = useState(false);
+    // const [setEmotion, Emotion] = useState();
+    // const [value, setValue] = useState(0);
+    // const [update, setUpdate] = useState(false);
     
-    // return () => setValue(value => value + 1);
+    // // return () => setValue(value => value + 1);
 
-    useEffect(()=> {
-        console.log("RERENDER")
-    }, [update]);
+    // useEffect(()=> {
+    //     console.log("RERENDER")
+    // }, [update]);
 
 
-    useEffect(() => {
-        let didCancel = false;
+    // useEffect(() => {
+    //     let didCancel = false;
 
-        async function fetchData(){
-            if (!didCancel){
-                let response = await fetch(Analytics)
-                console.log("FETCHING")
-                console.log(response)
-                let data = await response
-                setEmotion(data)
+    //     async function fetchData(){
+    //         if (!didCancel){
+    //             let response = await fetch(Analytics)
+    //             console.log("FETCHING")
+    //             console.log(response)
+    //             let data = await response
+    //             console.log(data)
+    //             setEmotion(data)
+    //             console.log(Emotion)
+    //             console.log("RAR")
                 
-            }
-        }
+    //         }
+    //     }
 
-        fetchData();
+    // fetchData();
 
-        return() => {
-            didCancel = true;
-        }
-    }, [update])
-
-
+    //     return() => {
+    //         didCancel = true;
+    //     }
+    // }, [update])
 
 
-    const dbRef = ref(getDatabase());
+    // const dbRef = ref(getDatabase());
     // get(child(dbRef, getEmotions)).then((snapshot)=>{
-    get(child(dbRef, `users/${global.uid}`)).then((snapshot) => {
-        if(snapshot.exists()){
-            var data = snapshot.val();
-            console.log(data);
-            const numEntries = Object.keys(data).length
-            console.log(numEntries)
+    //     var getData = get(child(dbRef, 'users/${global.uid}'))
+    //     getData.then((snapshot)=>{
+    //         var data = snapshot.val();
+    //         console.log(data)
+    //         const numEntries = Object.keys(data).length
+    //         console.log(numEntries)
+
+    //         console.log(Object.values(data)[0]["entry"]["reason"])
+    //         global.item1Emotion = Object.values(data)[numEntries-1]["entry"]["feeling"]
+    //         global.item1Reason = Object.values(data)[numEntries-1]["entry"]["reason"]
+    //         global.item1Mood = Object.values(data)[numEntries-1]["entry"]["mood"]
+    //         global.item1Time = Object.values(data)[numEntries-1]["entry"]["time"]
+    //         global.item1Time = Moment(global.item1Time).format('D MMM YYYY - h:mma ')
+    //         global.item1Image = getImage(global.item1Emotion)
+    //     })
+    // })
+
+    const db = getDatabase();
+    const emotionsRef = ref(db, 'users/' + global.uid);
+    onValue(emotionsRef, (snapshot)=>{
+        const data = snapshot.val();
+        const numEntries = Object.keys(data).length
+        console.log(numEntries)
+        console.log(data)
 
 
-            console.log(Object.values(data)[0]["entry"]["reason"])
-            global.item1Emotion = Object.values(data)[numEntries-1]["entry"]["feeling"]
-            global.item1Reason = Object.values(data)[numEntries-1]["entry"]["reason"]
-            global.item1Mood = Object.values(data)[numEntries-1]["entry"]["mood"]
-            global.item1Time = Object.values(data)[numEntries-1]["entry"]["time"]
-            global.item1Time = Moment(global.item1Time).format('D MMM YYYY - h:mma ')
-            global.item1Image = getImage(global.item1Emotion)
+        console.log(Object.values(data)[0]["entry"]["reason"])
+        global.item1Emotion = Object.values(data)[numEntries-1]["entry"]["feeling"]
+        global.item1Reason = Object.values(data)[numEntries-1]["entry"]["reason"]
+        global.item1Mood = Object.values(data)[numEntries-1]["entry"]["mood"]
+        global.item1Time = Object.values(data)[numEntries-1]["entry"]["time"]
+        global.item1Time = Moment(global.item1Time).format('D MMM YYYY - h:mma ')
+        global.item1Image = getImage(global.item1Emotion)
 
+        global.item2Emotion = Object.values(data)[numEntries-2]["entry"]["feeling"]
+        global.item2Reason = Object.values(data)[numEntries-2]["entry"]["reason"]
+        global.item2Mood = Object.values(data)[numEntries-2]["entry"]["mood"]
+        global.item2Time = Object.values(data)[numEntries-2]["entry"]["time"]
+        global.item2Time = Moment(global.item2Time).format('D MMM YYYY - h:mma ')
+        global.item2Image = getImage(global.item2Emotion)
 
-        } else {
-            console.log("No data available")
-        }
-    }).catch((error) =>{
-        console.log(error)
     })
 
-
-    
 
     return (
         <Screen style={styles.background}>
@@ -98,13 +165,31 @@ function Analytics(props) {
             itemMood={global.item1Mood}
             itemReason={global.item1Reason}/>
 
+            {/* <DailyView itemImage={global.item1Image} 
+            itemEmotion={global.item1Emotion}
+            itemTime={global.item1Time}
+            itemMood={global.item1Mood}
+            itemReason={global.item1Reason}/> */}
+
+            <DailyView itemImage={global.item2Image} 
+            itemEmotion={global.item2Emotion}
+            itemTime={global.item2Time}
+            itemMood={global.item2Mood}
+            itemReason={global.item2Reason}/>
+
+            {/* <DailyView itemImage={global.item3Image} 
+            itemEmotion={global.item3Emotion}
+            itemTime={global.item3Time}
+            itemMood={global.item3Mood}
+            itemReason={global.item3Reason}/> */}
+
 
 
 
     </ScrollView>
 
 
-    <AppButton type="submit" onPress={()=>setUpdate((prevState)=> !prevState)} title="tester"/>
+    {/* <AppButton type="submit" onPress={()=>setUpdate((prevState)=> !prevState)} title="tester"/> */}
 
         
 
