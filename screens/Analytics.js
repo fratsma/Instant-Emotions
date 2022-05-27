@@ -1,12 +1,12 @@
 import React, { useState, useEffect, Component, Suspense } from 'react';
 import Screen from '../components/Screen';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList } from 'react-native';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
 import colours from '../config/colours';
 import App from '../App';
 import Moment from 'moment';
 import {getImage} from '../config/images'
-import DailyView from '../components/DailyView';
+import DailyView2 from '../components/DailyView2';
 import { render } from 'react-dom';
 import { databaseEmotions } from '../config/emotions';
 import EmotionsTry2 from '../config/EmotionsTry2';
@@ -19,33 +19,32 @@ import AppButton from '../components/AppButton';
 function Analytics(props) {
 
 
+    const [emotions, setEmotions] = useState([])
+    
 
-    const db = getDatabase();
-    const emotionsRef = ref(db, 'users/' + global.uid);
-    onValue(emotionsRef, (snapshot)=>{
-        const data = snapshot.val();
-        const numEntries = Object.keys(data).length
-        console.log(numEntries)
-        console.log(data)
-
-
-        console.log(Object.values(data)[0]["entry"]["reason"])
-        global.item1Emotion = Object.values(data)[numEntries-1]["entry"]["feeling"]
-        global.item1Reason = Object.values(data)[numEntries-1]["entry"]["reason"]
-        global.item1Mood = Object.values(data)[numEntries-1]["entry"]["mood"]
-        global.item1Time = Object.values(data)[numEntries-1]["entry"]["time"]
-        global.item1Time = Moment(global.item1Time).format('D MMM YYYY - h:mma ')
-        global.item1Image = getImage(global.item1Emotion)
-
-        global.item2Emotion = Object.values(data)[numEntries-2]["entry"]["feeling"]
-        global.item2Reason = Object.values(data)[numEntries-2]["entry"]["reason"]
-        global.item2Mood = Object.values(data)[numEntries-2]["entry"]["mood"]
-        global.item2Time = Object.values(data)[numEntries-2]["entry"]["time"]
-        global.item2Time = Moment(global.item2Time).format('D MMM YYYY - h:mma ')
-        global.item2Image = getImage(global.item2Emotion)
-
-    })
-
+    React.useEffect(() => {
+        const db = getDatabase();
+        const emotionsRef = ref(db, 'users/' + global.uid);
+        // console.log(emotionsRef)
+    
+        get(emotionsRef).then((snapshot) => {
+        if (snapshot.exists()) {
+            // console.log("log")
+            // console.log(snapshot.val());
+            // console.log(Object.values(snapshot.val())[0]["entry"]["feeling"])
+            const e = Object.values(snapshot.val()).map(x => {return x["entry"]})
+            e.reverse()
+            setEmotions(e)
+            // console.log("emotions: ",emotions)
+        } else {
+            // console.log("No data available");
+        }
+        }).catch((error) => {
+        console.error(error);
+    });
+    }, []
+    )
+    
 
     return (
         <Screen style={styles.background}>
@@ -55,14 +54,21 @@ function Analytics(props) {
             {/* <Button title='heek' onPress={getData}/> */}
 
 
-            <ScrollView>
+            <View>
+                {emotions.map(x => {
+                    return <DailyView2 key={x.time} props={x}/>
+                })}
 
-                
-            <DailyView itemImage={global.item1Image} 
-            itemEmotion={global.item1Emotion}
+            </View> 
+
+
+
+                {/* // <DailyView2 props={emotions[0]}/> */}
+            {/* <DailyView itemImage={undefined}  
+            itemEmotion={emotions[0]["feeling"]}
             itemTime={global.item1Time}
             itemMood={global.item1Mood}
-            itemReason={global.item1Reason}/>
+            itemReason={global.item1Reason}/> */}
 
             {/* <DailyView itemImage={global.item1Image} 
             itemEmotion={global.item1Emotion}
@@ -70,11 +76,6 @@ function Analytics(props) {
             itemMood={global.item1Mood}
             itemReason={global.item1Reason}/> */}
 
-            <DailyView itemImage={global.item2Image} 
-            itemEmotion={global.item2Emotion}
-            itemTime={global.item2Time}
-            itemMood={global.item2Mood}
-            itemReason={global.item2Reason}/>
 
             {/* <DailyView itemImage={global.item3Image} 
             itemEmotion={global.item3Emotion}
@@ -85,7 +86,6 @@ function Analytics(props) {
 
 
 
-    </ScrollView>
 
 
     {/* <AppButton type="submit" onPress={()=>setUpdate((prevState)=> !prevState)} title="tester"/> */}
