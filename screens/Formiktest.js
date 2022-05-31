@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native';
@@ -29,6 +29,8 @@ import App from '../App';
 // import { ref as sRef } from 'firebase/storage';
 
 function storeData(values, {resetForm}){
+
+
     const db = getDatabase();
     const reference = ref(db, 'users/' + global.uid);
     push(reference,  {
@@ -36,6 +38,10 @@ function storeData(values, {resetForm}){
     });
     console.log('dataset')
     resetForm();
+
+    
+
+    
 }
 
 // function storeData(values){
@@ -495,7 +501,7 @@ function Formiktest(props) {
     
     
     
-                    <View style={styles.viewStyle}>
+                    <View style={styles.viewStyleBottom}>
     
                         
                         <View style={styles.spacesBetween}>
@@ -712,7 +718,14 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         height: 100,
         justifyContent: "center",
-        
+    },
+
+
+    viewStyleBottom:{
+        flexDirection: "row",
+        height: 100,
+        justifyContent: "center",
+        marginBottom: 30,
     },
 
     viewScore:{

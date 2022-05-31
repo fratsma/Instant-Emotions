@@ -53,14 +53,17 @@ function Analytics(props) {
             </Text>
             {/* <Button title='heek' onPress={getData}/> */}
 
+            <ScrollView>
+                
+            
+                <View>
+                    {emotions.map(x => {
+                        return <DailyView2 key={x.time} props={x}/>
+                    })}
 
-            <View>
-                {emotions.map(x => {
-                    return <DailyView2 key={x.time} props={x}/>
-                })}
-
-            </View> 
-
+                </View> 
+            
+            </ScrollView>
 
 
                 {/* // <DailyView2 props={emotions[0]}/> */}
