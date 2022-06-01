@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component, Suspense } from 'react';
 import Screen from '../components/Screen';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, RefreshControl } from 'react-native';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
 import colours from '../config/colours';
 import App from '../App';
@@ -17,6 +17,17 @@ import AppButton from '../components/AppButton';
 
 
 function Analytics(props) {
+
+    const wait = (timeout) => {
+        return new Promise(resolve => setTimeout(resolve, timeout));
+      }
+
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        wait(2000).then(() => setRefreshing(false));
+    }, []);
 
 
     const [emotions, setEmotions] = useState([])
@@ -53,7 +64,11 @@ function Analytics(props) {
             </Text>
             {/* <Button title='heek' onPress={getData}/> */}
 
-            <ScrollView>
+            <ScrollView
+                refreshControl={
+                    <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+                }
+            >
                 
             
                 <View>
