@@ -536,7 +536,7 @@ function Formiktest(props) {
                             onPress={() => setFieldValue("feeling", "humiliated")}>
                                 <Image style={styles.emotions} source={require('../assets/humiliated.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.sad}>Humilated</Text>
+                            <Text style={styles.sad}>Humiliated</Text>
     
                         </View>
     

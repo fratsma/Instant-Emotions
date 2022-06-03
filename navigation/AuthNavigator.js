@@ -5,6 +5,7 @@ import AdvancedAnalytics from "../screens/AdvancedAnalytics";
 import Analytics from "../screens/Analytics";
 import Formiktest from "../screens/Formiktest";
 import React from 'react';
+import colours from '../config/colours';
 
 const Stack = createStackNavigator
 

@@ -7,11 +7,13 @@ import Screen from '../components/Screen';
 import {
     LineChart,
     BarChart,
-    PieChart,
+    // PieChart,
     ProgressChart,
     ContributionGraph,
     StackedBarChart
   } from "react-native-chart-kit";
+
+import PieChart from 'react-native-expo-pie-chart';
 
 
 function AdvancedAnalytics(props) {
@@ -23,6 +25,10 @@ function AdvancedAnalytics(props) {
     var mood3 = 0
     var mood4 = 0
     var mood5 = 0
+
+    var green = 0
+    var grey = 0
+    var red = 0
 
     var commitsData = []
     const db = getDatabase();
@@ -56,10 +62,30 @@ function AdvancedAnalytics(props) {
               {date: graphData[x], count: 1}
             )
               
-
-
-
             x=x+1
+
+            if (value["entry"]["feeling"] == "happy" || value["entry"]["feeling"] == "excited" || value["entry"]["feeling"] == "amazed" 
+                || value["entry"]["feeling"] == "amused" || value["entry"]["feeling"] == "admiration" || value["entry"]["feeling"] == "nostalgic"
+                || value["entry"]["feeling"] == "rested" || value["entry"]["feeling"] == "passionate" || value["entry"]["feeling"] == "relieved"
+                || value["entry"]["feeling"] == "blissful" || value["entry"]["feeling"] == "proud") {
+                green += 1
+            }
+            else if (value["entry"]["feeling"] == "sad" || value["entry"]["feeling"] == "upset" || value["entry"]["feeling"] == "scared"
+                || value["entry"]["feeling"] == "stressed" || value["entry"]["feeling"] == "anxious" || value["entry"]["feeling"] == "unwell"
+                || value["entry"]["feeling"] == "annoyed" || value["entry"]["feeling"] == "frustrated" || value["entry"]["feeling"] == "disappointed"
+                || value["entry"]["feeling"] == "overwhelmed" || value["entry"]["feeling"] == "jealous" || value["entry"]["feeling"] == "humiliated"){
+                red += 1
+            }
+
+            else if (value["entry"]["feeling"] == "content" || value["entry"]["feeling"] == "meh" || value["entry"]["feeling"] == "emotional"
+                || value["entry"]["feeling"] == "confused" || value["entry"]["feeling"] == "hungry" || value["entry"]["feeling"] == "awkward"
+                || value["entry"]["feeling"] == "tired" || value["entry"]["feeling"] == "shy" || value["entry"]["feeling"] == "shocked"
+                || value["entry"]["feeling"] == "depend" || value["entry"]["feeling"] == "sympathy" || value["entry"]["feeling"] == "guilty"){
+                red += 1
+            }
+                
+
+
 
 
 
@@ -90,6 +116,13 @@ function AdvancedAnalytics(props) {
         }
 
 
+        const pieData = [
+          {name: 'Happy', frequency: 5, color: colours.green},
+          {name: 'Sad', frequency: 8, color: colours.green},
+          {name: 'Neutral', frequency: 14, color: colours.green},
+        ]
+
+
 
 
     
@@ -102,6 +135,8 @@ function AdvancedAnalytics(props) {
                 Instant Emotions
             </Text>
 
+
+            <ScrollView>
 
 
             <Text style={styles.subText}>Log Diary</Text>
@@ -144,6 +179,7 @@ function AdvancedAnalytics(props) {
                       width={400}
                       height={220}
                       withInnerLines={false}
+                      fromZero={true}
                      
                       chartConfig={{
                         backgroundColor: colours.grey,
@@ -165,6 +201,39 @@ function AdvancedAnalytics(props) {
                       verticalLabelRotation={30}
 />
                     </View>
+
+                    <Text style={styles.subText}>Mood Breakdown</Text>
+
+
+                    <View style={styles.spacer}>
+
+                      
+
+                    <PieChart
+                      data={[
+                      {
+                          key: 'Happy',
+                          count: green,
+                          color: 'green',
+                      },
+                      {
+                          key: 'Neutral',
+                          count: 25,
+                          color: 'grey',
+                      },
+                      {
+                          key: 'Sad',
+                          count: red,
+                          color: 'red',
+                      },
+               
+                      ]}
+                      length={200}
+                      />
+                    </View>
+
+            </ScrollView>
+
 
 
         </Screen>
@@ -207,6 +276,15 @@ const styles = StyleSheet.create({
       marginTop: 20,
       marginBottom: 0,
   },
+
+  spacer:{
+    // paddingBottom: 20,
+    paddingTop: 10,
+    // marginBottom: 20,
+    // marginTop: 20,
+  },
+
+
 
 
 

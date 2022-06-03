@@ -18,6 +18,7 @@ import AppButton from '../components/AppButton';
 
 function Analytics(props) {
 
+    
     const wait = (timeout) => {
         return new Promise(resolve => setTimeout(resolve, timeout));
       }
@@ -26,7 +27,29 @@ function Analytics(props) {
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
-        wait(2000).then(() => setRefreshing(false));
+        const db = getDatabase();
+        const emotionsRef = ref(db, 'users/' + global.uid);
+        // console.log(emotionsRef)
+    
+        get(emotionsRef).then((snapshot) => {
+        if (snapshot.exists()) {
+            // console.log("log")
+            // console.log(snapshot.val());
+            // console.log(Object.values(snapshot.val())[0]["entry"]["feeling"])
+            const e = Object.values(snapshot.val()).map(x => {return x["entry"]})
+            e.reverse()
+            setEmotions(e)
+            // console.log("emotions: ",emotions)
+            setRefreshing(false)
+        } else {
+            setRefreshing(false)
+            // console.log("No data available");
+        }
+        }).catch((error) => {
+        console.error(error);
+        setRefreshing(false)
+    });
+        // wait(200).then(() => setRefreshing(false));
     }, []);
 
 

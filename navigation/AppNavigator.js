@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import colours from "../config/colours";
 
 
 const Tab = createBottomTabNavigator();
@@ -18,6 +19,7 @@ function forceUpdate(){
 
 const AppNavigator = () => (
     <Tab.Navigator
+    // inactiveColor="#2a475e"
     screenOptions={{
         headerShown: false,
         // lazy: true

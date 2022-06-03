@@ -7,5 +7,6 @@ export default{
     danger: "#303138",
     background: '#ffffff',
     green: '#0ac435',
-    red: '#e03647'
+    red: '#e03647',
+    blue: '#2a475e',
 }
