@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, Dimensions } from 'react-native';
 import colours from '../config/colours';
 // import { Text } from 'react-native';
-import { getDatabase, ref, onValue} from "firebase/database";
 import Screen from '../components/Screen';
 import {
     LineChart,
@@ -14,22 +13,22 @@ import {
   } from "react-native-chart-kit";
 
 import PieChart from 'react-native-expo-pie-chart';
-import { get } from 'lodash';
+import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
 
 
 function AdvancedAnalytics(props) {
-    // [barData, setBarData] = React.useState({
-    //       labels: ["1", "2", "3", "4", "5"],
-    //       datasets: [
-    //         {data: []}
-    //       ]
-    //     })
-    [pieData, setPieData] = React.useState([])
-    // [commits, setCommits] = React.useState()
-
-  
-    var dictLength = 0
-    var graphData = {}
+   const [barData, setBarData] = React.useState({
+          labels: ["1", "2", "3", "4", "5"],
+          datasets: [
+            {data: []}
+          ]
+        })
+    const [pieData, setPieData] = React.useState([])
+    const [commitsData, setCommitsData] = React.useState([])
+    const [graphData, setGraphData] = React.useState({})
+    const [dictLength, setDictLength] = React.useState(0)
+    // var dictLength = 0
+    // var graphData = {}
  
     var mood1 = 0
     var mood2 = 0
@@ -41,11 +40,23 @@ function AdvancedAnalytics(props) {
     var grey = 0
     var red = 0
 
-    var commitsData = []
     const db = getDatabase();
     const getEmotions = ref(db, 'users/' + global.uid);
-    onValue(getEmotions, (snapshot)=>{
-        var data = snapshot.val();
+
+
+ 
+ 
+
+
+    React.useEffect(() => {
+      const db = getDatabase();
+      const emotionsRef = ref(db, 'users/' + global.uid);
+      // console.log(emotionsRef)
+  
+      get(emotionsRef).then((snapshot) => {
+      if (snapshot.exists()) {
+          console.log("yays")
+          var data = snapshot.val();
         var x = 0
 
         for (const value of Object.values(data)) {
@@ -111,37 +122,31 @@ function AdvancedAnalytics(props) {
 
         console.log(Object.values(data)[0]["entry"]["reason"])
 
-        dictLength = Object.keys(graphData).length -1
+        setDictLength( Object.keys(graphData).length -1)
         console.log(dictLength)
         console.log(new Date(graphData[dictLength]))
 
+      setBarData({
+        labels: ["1", "2", "3", "4", "5"],
+        datasets: [
+          {data: [mood1, mood2, mood3, mood4, mood5]}
+        ]
+      })
 
-        })
-
-
-        const barData ={
-          labels: ["1", "2", "3", "4", "5"],
-          datasets: [
-            {data: [mood1, mood2, mood3, mood4, mood5]}
-          ]
-        }
- 
- 
-
-
-    // React.useEffect(() => {
-    //   const db = getDatabase();
-    //   const getEmotions = ref(db, 'users/' + global.uid);
-    //   get(getEmotions).then((snapshot) => {
-    //     if (snapshot.exists()) {
-    //       console.log("g")
-    //     }
-    //   }).catch((error) => {
-    //     console.error(error);
-    // });
-
-
-    // },[]);
+      setPieData([
+        {key: "Happy", count: green, color: colours.green},
+        {key: "Sad", count: red, color: colours.red},
+        {key: "Meh", count: grey, color: colours.grey}
+      ])
+          // console.log("emotions: ",emotions)
+      } else {
+          // console.log("No data available");
+      }
+      }).catch((error) => {
+      console.error(error);
+  });
+  }, []
+  )
 
      
             
@@ -162,7 +167,7 @@ function AdvancedAnalytics(props) {
             <View style={{alignItems: 'center'}}>
                     <ContributionGraph
                         values={commitsData}
-                        endDate={new Date(graphData[dictLength])}
+                        endDate={new Date()}
                         numDays={365}
                         width={400}
 
