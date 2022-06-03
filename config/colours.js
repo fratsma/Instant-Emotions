@@ -9,4 +9,5 @@ export default{
     green: '#0ac435',
     red: '#e03647',
     blue: '#2a475e',
+    lightblue: '#719edd',
 }

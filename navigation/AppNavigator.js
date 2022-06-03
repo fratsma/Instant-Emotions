@@ -20,10 +20,15 @@ function forceUpdate(){
 const AppNavigator = () => (
     <Tab.Navigator
     // inactiveColor="#2a475e"
+    barStyle={{color: colours.blue }}
+    
     screenOptions={{
+        tabBarStyle: { position: 'absolute', bottom: 0, backgroundColor: colours.lightblue },
+        tabBarLabelStyle: { color: colours.danger, fontSize: 12 },
         headerShown: false,
         // lazy: true
-      }}>
+      }}
+      >
         <Tab.Screen 
         name="Home" 
         component={Formiktest}

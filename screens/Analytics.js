@@ -36,8 +36,10 @@ function Analytics(props) {
             // console.log("log")
             // console.log(snapshot.val());
             // console.log(Object.values(snapshot.val())[0]["entry"]["feeling"])
-            const e = Object.values(snapshot.val()).map(x => {return x["entry"]})
+            let e = Object.values(snapshot.val()).map(x => {return x["entry"]})
             e.reverse()
+            e = e.slice(0,50)
+
             setEmotions(e)
             // console.log("emotions: ",emotions)
             setRefreshing(false)
@@ -66,8 +68,9 @@ function Analytics(props) {
             // console.log("log")
             // console.log(snapshot.val());
             // console.log(Object.values(snapshot.val())[0]["entry"]["feeling"])
-            const e = Object.values(snapshot.val()).map(x => {return x["entry"]})
+            let e = Object.values(snapshot.val()).map(x => {return x["entry"]})
             e.reverse()
+            e = e.slice(0,50)
             setEmotions(e)
             // console.log("emotions: ",emotions)
         } else {

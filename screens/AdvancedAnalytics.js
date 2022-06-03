@@ -14,12 +14,23 @@ import {
   } from "react-native-chart-kit";
 
 import PieChart from 'react-native-expo-pie-chart';
+import { get } from 'lodash';
 
 
 function AdvancedAnalytics(props) {
+    // [barData, setBarData] = React.useState({
+    //       labels: ["1", "2", "3", "4", "5"],
+    //       datasets: [
+    //         {data: []}
+    //       ]
+    //     })
+    [pieData, setPieData] = React.useState([])
+    // [commits, setCommits] = React.useState()
+
+  
     var dictLength = 0
     var graphData = {}
-
+ 
     var mood1 = 0
     var mood2 = 0
     var mood3 = 0
@@ -81,7 +92,7 @@ function AdvancedAnalytics(props) {
                 || value["entry"]["feeling"] == "confused" || value["entry"]["feeling"] == "hungry" || value["entry"]["feeling"] == "awkward"
                 || value["entry"]["feeling"] == "tired" || value["entry"]["feeling"] == "shy" || value["entry"]["feeling"] == "shocked"
                 || value["entry"]["feeling"] == "depend" || value["entry"]["feeling"] == "sympathy" || value["entry"]["feeling"] == "guilty"){
-                red += 1
+                grey += 1
             }
                 
 
@@ -114,18 +125,25 @@ function AdvancedAnalytics(props) {
             {data: [mood1, mood2, mood3, mood4, mood5]}
           ]
         }
+ 
+ 
 
 
-        const pieData = [
-          {name: 'Happy', frequency: 5, color: colours.green},
-          {name: 'Sad', frequency: 8, color: colours.green},
-          {name: 'Neutral', frequency: 14, color: colours.green},
-        ]
+    // React.useEffect(() => {
+    //   const db = getDatabase();
+    //   const getEmotions = ref(db, 'users/' + global.uid);
+    //   get(getEmotions).then((snapshot) => {
+    //     if (snapshot.exists()) {
+    //       console.log("g")
+    //     }
+    //   }).catch((error) => {
+    //     console.error(error);
+    // });
 
 
+    // },[]);
 
-
-    
+     
             
 
         
@@ -141,14 +159,19 @@ function AdvancedAnalytics(props) {
 
             <Text style={styles.subText}>Log Diary</Text>
 
-            <View>
+            <View style={{alignItems: 'center'}}>
                     <ContributionGraph
                         values={commitsData}
                         endDate={new Date(graphData[dictLength])}
-                        numDays={110}
+                        numDays={365}
                         width={400}
 
                         height={220}
+                        squareSize={5}
+                        showMonthLabels={false}
+                        gutterSize={0}
+                        // horizontal={false}
+
                         chartConfig={{
                             backgroundColor: colours.grey,
                             backgroundGradientFrom: colours.grey,
@@ -163,8 +186,9 @@ function AdvancedAnalytics(props) {
                               r: "6",
                               strokeWidth: "2",
                               stroke: "#ffa726"
-                            }
+                            },
                           }}
+
 />
                     </View>
 
@@ -173,7 +197,7 @@ function AdvancedAnalytics(props) {
 
 
 
-                    <View >
+                    <View  style={{alignItems: 'center'}}>
                     <BarChart
                       data={barData}
                       width={400}
@@ -198,6 +222,10 @@ function AdvancedAnalytics(props) {
                           stroke: "#ffa726"
                         }
                       }}
+                      style={{
+                        borderRadius: 16
+                    
+                      }}
                       verticalLabelRotation={30}
 />
                     </View>
@@ -210,24 +238,7 @@ function AdvancedAnalytics(props) {
                       
 
                     <PieChart
-                      data={[
-                      {
-                          key: 'Happy',
-                          count: green,
-                          color: 'green',
-                      },
-                      {
-                          key: 'Neutral',
-                          count: 25,
-                          color: 'grey',
-                      },
-                      {
-                          key: 'Sad',
-                          count: red,
-                          color: 'red',
-                      },
-               
-                      ]}
+                      data={pieData}
                       length={200}
                       />
                     </View>
