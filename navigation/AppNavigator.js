@@ -22,9 +22,10 @@ const AppNavigator = () => (
     // inactiveColor="#2a475e"
     barStyle={{color: colours.blue }}
     
+    
     screenOptions={{
         tabBarStyle: { position: 'absolute', bottom: 0, backgroundColor: colours.lightblue },
-        tabBarLabelStyle: { color: colours.danger, fontSize: 12 },
+        tabBarLabelStyle: { color: "#3f3f3f", fontSize: 12 },
         headerShown: false,
         // lazy: true
       }}
@@ -33,17 +34,17 @@ const AppNavigator = () => (
         name="Home" 
         component={Formiktest}
         options={{
-            tabBarIcon: () => <AntDesign name="plus" size={24} color="black" />
+            tabBarIcon: () => <AntDesign name="plus" size={24} color="#3f3f3f" />
             
         }} />
         <Tab.Screen name="Daily View" component={Analytics} 
         options={{
-            tabBarIcon: () => <MaterialIcons name="calendar-today" size={24} color="black" />
+            tabBarIcon: () => <MaterialIcons name="calendar-today" size={24} color="#3f3f3f" />
             
         }} />
         <Tab.Screen name="Analytics" component={AdvancedAnalytics} 
         options={{
-            tabBarIcon: () => <Ionicons name="analytics" size={24} color="black" />
+            tabBarIcon: () => <Ionicons name="analytics" size={24} color="#3f3f3f" />
             
         }}/>
     </Tab.Navigator>

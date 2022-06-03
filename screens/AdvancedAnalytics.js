@@ -154,9 +154,12 @@ function AdvancedAnalytics(props) {
         
     return (
         <Screen style={styles.background}>
-            <Text style={styles.mainText}>
+            <Text style={styles.mainText4}>
                 Instant Emotions
             </Text>
+
+
+            <View style={styles.whiteBackground}>
 
 
             <ScrollView>
@@ -250,6 +253,8 @@ function AdvancedAnalytics(props) {
 
             </ScrollView>
 
+            </View>
+
 
 
         </Screen>
@@ -259,23 +264,49 @@ function AdvancedAnalytics(props) {
 
 const styles = StyleSheet.create({
 
-    background:{
-        backgroundColor: colours.background,
-        flex: 1,
-        paddingBottom: 20,
-    },
+        background:{
+          backgroundColor: colours.lightblue,
+          flex: 1,
+          paddingBottom: 20,
+      },
+
+      whiteBackground:{
+          backgroundColor: colours.background,
+          borderRadius: 15
+
+      },
 
     
     mainText:{
-        fontSize: 40, 
-        paddingTop: 10,
-        fontWeight: 'bold', 
-        textAlign: 'center',
-        color: colours.danger,
-        // fontFamily: 'Arial-BoldMT'
-        // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Kohinoor Bangla',
-    },
+      fontSize: 40, 
+      paddingTop: 5,
+      paddingBottom: 10,
+      fontWeight: 'bold', 
+      textAlign: 'center',
+      color: colours.danger,
+      // fontFamily: 'Arial-BoldMT'
+      // fontFamily: 'Helvetica Neue'
+      fontFamily: 'Kohinoor Bangla'
+      
+  },
+
+
+
+  mainText4:{
+    fontSize: 40, 
+    paddingTop: 5,
+    paddingBottom: 10,
+    fontWeight: 'bold', 
+    textAlign: 'center',
+    color: colours.reallyGrey,
+    // fontFamily: 'Arial-BoldMT'
+    // fontFamily: 'Helvetica Neue'
+    fontFamily: 'Kohinoor Bangla',
+    
+
+    
+},
+
 
     graphWidth:{
       width: '80%',
@@ -296,6 +327,7 @@ const styles = StyleSheet.create({
   spacer:{
     // paddingBottom: 20,
     paddingTop: 10,
+    marginBottom: 120,
     // marginBottom: 20,
     // marginTop: 20,
   },

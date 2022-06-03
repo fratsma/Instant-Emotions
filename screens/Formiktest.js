@@ -126,7 +126,7 @@ function Formiktest(props) {
 
     return (
         <Screen style={styles.background}>
-            <Text style={styles.mainText}>Instant Emotions</Text>
+            <Text style={styles.mainText4}>Instant Emotions</Text>
 
 
 
@@ -549,14 +549,17 @@ function Formiktest(props) {
     
     
                 </ScrollView>   
+
+                <View style={styles.whiteBackground}>
     
-                <Text style={styles.subText}>Why are you feeling {values.feeling}</Text>
+                <Text style={styles.subText}>Why are you feeling {values.feeling}?</Text>
     
                 <View style={styles.viewInput}>
                     <TextInput 
                         style={styles.input}
                         onChangeText={handleChange("reason")}
                         maxLength={19}
+                        
                         
                     />
                 </View>
@@ -616,6 +619,8 @@ function Formiktest(props) {
                 
                 </View>
 
+                </View>
+
 
                 </>
                 )}
@@ -636,9 +641,15 @@ function Formiktest(props) {
 
 const styles = StyleSheet.create({
     background:{
-        backgroundColor: colours.background,
+        backgroundColor: colours.lightblue,
         flex: 1,
-        paddingBottom: 20
+        paddingBottom: 20,
+        
+    },
+
+    whiteBackground:{
+        backgroundColor: colours.background,
+
     },
 
     emotions:{
@@ -672,7 +683,8 @@ const styles = StyleSheet.create({
 
     mainText:{
         fontSize: 40, 
-        paddingTop: 10,
+        paddingTop: 5,
+        paddingBottom: 10,
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
@@ -681,6 +693,22 @@ const styles = StyleSheet.create({
         fontFamily: 'Kohinoor Bangla'
         
     },
+
+
+    mainText4:{
+        fontSize: 40, 
+        paddingTop: 5,
+        paddingBottom: 10,
+        fontWeight: 'bold', 
+        textAlign: 'center',
+        color: colours.reallyGrey,
+        // fontFamily: 'Arial-BoldMT'
+        // fontFamily: 'Helvetica Neue'
+        fontFamily: 'Kohinoor Bangla',
+
+        
+    },
+
 
     mainText2:{
         fontSize: 40, 
@@ -694,12 +722,18 @@ const styles = StyleSheet.create({
     },
 
     gap:{
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingBottom: 30
     },
 
     scroller:{
         paddingTop: 40,
         backgroundColor: colours.white,
+        width: '90%',
+        alignSelf: 'center',
+        borderTopStartRadius: 10,
+        borderTopEndRadius: 10,
+        
         
     },
 
@@ -758,6 +792,7 @@ const styles = StyleSheet.create({
         borderColor: colours.danger,
         fontFamily: 'Arial-BoldMT',
         fontSize: 25,
+        borderRadius: 15,
 
     },
 

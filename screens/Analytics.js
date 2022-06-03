@@ -85,12 +85,15 @@ function Analytics(props) {
 
     return (
         <Screen style={styles.background}>
-            <Text style={styles.mainText}>
+            <Text style={styles.mainText4}>
                 Instant Emotions
             </Text>
             {/* <Button title='heek' onPress={getData}/> */}
+            
+            <View style={styles.whiteBackground}>
 
             <ScrollView
+                style={styles.marginT}
                 refreshControl={
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }
@@ -105,6 +108,8 @@ function Analytics(props) {
                 </View> 
             
             </ScrollView>
+
+            </View>
 
 
                 {/* // <DailyView2 props={emotions[0]}/> */}
@@ -148,21 +153,49 @@ function Analytics(props) {
 const styles = StyleSheet.create({
 
     background:{
-        backgroundColor: colours.background,
+        backgroundColor: colours.lightblue,
         flex: 1,
-        paddingBottom: 20
+        paddingBottom: 20,
+        borderRadius: 15,
+    },
+
+    whiteBackground:{
+        backgroundColor: colours.white,
+
+        borderRadius: 15,
+
+        
+        
+
     },
 
     
     mainText:{
         fontSize: 40, 
-        paddingTop: 10,
+        paddingTop: 5,
+        paddingBottom: 10,
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
+        fontFamily: 'Kohinoor Bangla'
+        
+    },
+
+    mainText4:{
+        fontSize: 40, 
+        paddingTop: 5,
+        paddingBottom: 10,
+        fontWeight: 'bold', 
+        textAlign: 'center',
+        color: colours.reallyGrey,
+        // fontFamily: 'Arial-BoldMT'
+        // fontFamily: 'Helvetica Neue'
         fontFamily: 'Kohinoor Bangla',
+        
+
+        
     },
 
     emotionText:{
@@ -208,6 +241,16 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80
     },
+
+    marginT:{
+        marginBottom: 90, 
+        width: '90%',
+        alignSelf: 'center',
+        borderTopStartRadius: 10,
+        borderTopEndRadius: 10,
+        backgroundColor: colours.background
+        
+    }
 })
 
 export default Analytics;

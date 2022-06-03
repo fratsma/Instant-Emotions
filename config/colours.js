@@ -9,5 +9,8 @@ export default{
     green: '#0ac435',
     red: '#e03647',
     blue: '#2a475e',
-    lightblue: '#719edd',
+    // lightblue: '#719edd',
+    // lightblue: '#b3c7ef',
+    lightblue: '#5978ae',
+    reallyGrey: '#fafafa',
 }
