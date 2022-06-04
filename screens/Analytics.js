@@ -74,7 +74,7 @@ function Analytics(props) {
             setEmotions(e)
             // console.log("emotions: ",emotions)
         } else {
-            // console.log("No data available");
+            console.log("No data available");
         }
         }).catch((error) => {
         console.error(error);
