@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
         color: colours.danger,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Kohinoor Bangla'
+        fontFamily: 'Arial Rounded MT Bold'
         
     },
 
@@ -192,14 +192,14 @@ const styles = StyleSheet.create({
         color: colours.reallyGrey,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Kohinoor Bangla',
+        fontFamily: 'Arial Rounded MT Bold',
         
 
         
     },
 
     emotionText:{
-        fontFamily: 'Kohinoor Bangla',
+        fontFamily: 'Arial Rounded MT Bold',
         fontSize: 20,
         justifyContent: 'center',
         fontWeight: 'bold',
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     },
 
     emotionSub:{
-        fontFamily: 'Kohinoor Bangla',
+        fontFamily: 'Arial Rounded MT Bold',
         fontSize: 15,
         justifyContent: 'center',
         flex: 1

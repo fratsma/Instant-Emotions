@@ -57,7 +57,7 @@
 // const styles = StyleSheet.create({
 
 //     emotionText:{
-//         fontFamily: 'Kohinoor Bangla',
+//         fontFamily: 'Arial Rounded MT Bold',
 //         fontSize: 20,
 //         justifyContent: 'center',
 //         fontWeight: 'bold',
@@ -75,7 +75,7 @@
 //     },
 
 //     emotionSub:{
-//         fontFamily: 'Kohinoor Bangla',
+//         fontFamily: 'Arial Rounded MT Bold',
 //         fontSize: 15,
 //         justifyContent: 'center',
 //         flex: 1

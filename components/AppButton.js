@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         color: colours.white,
         fontSize: 17,
         // textTransform: 'uppercase',
-        fontFamily: 'Kohinoor Bangla',
+        fontFamily: 'Arial Rounded MT Bold',
         fontWeight: 'bold',
     }
 })

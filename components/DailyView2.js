@@ -36,7 +36,7 @@ function DailyView(props) {
 const styles = StyleSheet.create({
 
     emotionText:{
-        fontFamily: 'Kohinoor Bangla',
+        fontFamily: 'Arial Rounded MT Bold',
         fontSize: 20,
         justifyContent: 'center',
         fontWeight: 'bold',
@@ -48,14 +48,16 @@ const styles = StyleSheet.create({
         paddingLeft: 40,
         alignContent: 'center',
         alignItems: 'center',
-        width: '60%'
+        width: '60%',
+        marginBottom: 20
+        
         
         
     },
 
     emotionSub:{
-        fontFamily: 'Kohinoor Bangla',
-        fontSize: 15,
+        fontFamily: 'Arial Rounded MT Bold',
+        fontSize: 13,
         justifyContent: 'center',
         flex: 1
 

@@ -15,8 +15,15 @@ import {
 import PieChart from 'react-native-expo-pie-chart';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
 
+import Moment from 'moment';
+import {getImage} from '../config/images'
+
+
+Moment.suppressDeprecationWarnings = true;
+
 
 function AdvancedAnalytics(props) {
+  
    const [barData, setBarData] = React.useState({
           labels: ["1", "2", "3", "4", "5"],
           datasets: [
@@ -27,6 +34,11 @@ function AdvancedAnalytics(props) {
     const [commitsData, setCommitsData] = React.useState([])
     const [graphData, setGraphData] = React.useState({})
     const [dictLength, setDictLength] = React.useState(0)
+
+    const [numEntry, setNumEntry] = React.useState(0)
+
+    const [numStreak, setNumStreak] = React.useState(0)
+
     // var dictLength = 0
     // var graphData = {}
  
@@ -35,10 +47,22 @@ function AdvancedAnalytics(props) {
     var mood3 = 0
     var mood4 = 0
     var mood5 = 0
+    var checker = 0
+    var current = 0
 
     var green = 0
     var grey = 0
     var red = 0
+    var dater = false
+
+    var streak = []
+    var time = 0
+    var count = 0
+
+    var numEntries = 0
+    var lineData = []
+    var lineValues = {}
+    // var lineObj = []
 
     const db = getDatabase();
     const getEmotions = ref(db, 'users/' + global.uid);
@@ -105,7 +129,16 @@ function AdvancedAnalytics(props) {
                 || value["entry"]["feeling"] == "depend" || value["entry"]["feeling"] == "sympathy" || value["entry"]["feeling"] == "guilty"){
                 grey += 1
             }
-                
+
+
+            lineData.push(JSON.parse(value["entry"]["mood"]))   
+
+
+            time = (value["entry"]["time"])
+
+            streak.push(Moment(time).format('D MMM YYYY'))
+
+
 
 
 
@@ -113,18 +146,75 @@ function AdvancedAnalytics(props) {
 
           }
 
-          console.log(graphData)
-          console.log(mood3)
+          // console.log(graphData)
+          // console.log(mood3)
+          // console.log(lineData)
+
+          console.log(streak)
+
+          
+
+
         
 
-        const numEntries = Object.keys(data).length
-        console.log(numEntries)
+        numEntries = Object.keys(data).length
+
+        console.log("HEY")
+        var i = numEntries 
+        var oneBehind = numEntries - 1
+        // current = (Moment(streak[numEntries-1]).format('D MMM YYYY'))
+        // checker = (Moment(streak[numEntries-1]).subtract(1, 'days').format('D MMM YYYY'))
+
+
+
+        // console.log("checker")
+        // console.log(checker)
+        // console.log("CURRENT")
+        // console.log(current)
+
+        while (dater == false) {
+          current = (Moment(streak[i]).format('D MMM YYYY'))
+          checker = (Moment(streak[oneBehind]).subtract(1, 'days').format('D MMM YYYY'))
+          if (checker == current) {
+            count += 1
+            i = i - 1
+            oneBehind = oneBehind - 1
+
+          }
+           
+          else if ( Moment(checker).add(1, 'days').format('D MMM YYYY') == current) {
+            count += 0
+            i = i - 1
+
+    
+            
+          }
+          else{
+            dater = true
+
+            
+          }
+            
+        }
+
+
+        console.log("count")
+        console.log(count)
+        setNumStreak(count)
+
+        
+
+
+
+        // console.log(numEntries)
 
         console.log(Object.values(data)[0]["entry"]["reason"])
 
         setDictLength( Object.keys(graphData).length -1)
         console.log(dictLength)
         console.log(new Date(graphData[dictLength]))
+
+        setNumEntry(numEntries)
 
       setBarData({
         labels: ["1", "2", "3", "4", "5"],
@@ -148,7 +238,6 @@ function AdvancedAnalytics(props) {
   }, []
   )
 
-     
             
 
         
@@ -162,31 +251,47 @@ function AdvancedAnalytics(props) {
             <View style={styles.whiteBackground}>
 
 
-            <ScrollView>
+            <ScrollView style={styles.whiteBackground}>
+
+            <View style={styles.viewStyle}>
+              
+
+              <View style={styles.spacesBetween}>
+                <Text style={styles.subText2}>Number of Entries</Text>
+                <Text style={styles.mainText4}>{numEntry}</Text>
+              </View>
+
+              <View style={styles.spacesBetween}>
+                <Text style={styles.subText2}>Current Streak</Text>
+                <Text style={styles.mainText4}>{numStreak}</Text>
+              </View>
 
 
-            <Text style={styles.subText}>Log Diary</Text>
+            </View>
 
-            <View style={{alignItems: 'center'}}>
+
+            {/* <Text style={styles.subText}>Log Diary</Text>
+
+            <View style={{alignItems: 'center', marginRight: 50}}>
                     <ContributionGraph
                         values={commitsData}
                         endDate={new Date()}
                         numDays={365}
                         width={400}
 
-                        height={220}
-                        squareSize={5}
-                        showMonthLabels={false}
+                        height={300}
+                        squareSize={20}
+                        showMonthLabels={true}
                         gutterSize={0}
                         // horizontal={false}
 
                         chartConfig={{
-                            backgroundColor: colours.grey,
-                            backgroundGradientFrom: colours.grey,
-                            backgroundGradientTo: colours.grey,
+                            backgroundColor: colours.white,
+                            backgroundGradientFrom: colours.white,
+                            backgroundGradientTo: colours.white,
                             decimalPlaces: 2, // optional, defaults to 2dp
-                            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                            labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                            color: (opacity = 1) => colours.lightblue,
+                            labelColor: (opacity = 1) => colours.black,
                             style: {
                               borderRadius: 16
                             },
@@ -198,29 +303,31 @@ function AdvancedAnalytics(props) {
                           }}
 
 />
-                    </View>
+                    </View> */}
+
+
 
 
                     <Text style={styles.subText}>Mood Frequency</Text>
 
 
 
-                    <View  style={{alignItems: 'center'}}>
+                    <View  style={{alignItems: 'center', marginRight: 20}}>
                     <BarChart
                       data={barData}
-                      width={400}
+                      width={440}
                       height={220}
                       withInnerLines={false}
                       fromZero={true}
                      
                       chartConfig={{
-                        backgroundColor: colours.grey,
-                        backgroundGradientFrom: colours.grey,
-                        backgroundGradientTo: colours.grey,
+                        backgroundColor: colours.white,
+                        backgroundGradientFrom: colours.white,
+                        backgroundGradientTo: colours.white,
                         
                         decimalPlaces: 0, // optional, defaults to 2dp
-                        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                        labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                        color: (opacity = 1) => colours.grey,
+                        labelColor: (opacity = 1) => colours.black,
                         style: {
                           borderRadius: 16
                         },
@@ -276,6 +383,12 @@ const styles = StyleSheet.create({
 
       },
 
+      blueBackground:{
+        backgroundColor: colours.lightblue,
+        borderRadius: 15
+
+    },
+
     
     mainText:{
       fontSize: 40, 
@@ -286,7 +399,7 @@ const styles = StyleSheet.create({
       color: colours.danger,
       // fontFamily: 'Arial-BoldMT'
       // fontFamily: 'Helvetica Neue'
-      fontFamily: 'Kohinoor Bangla'
+      fontFamily: 'Arial Rounded MT Bold'
       
   },
 
@@ -301,7 +414,8 @@ const styles = StyleSheet.create({
     color: colours.reallyGrey,
     // fontFamily: 'Arial-BoldMT'
     // fontFamily: 'Helvetica Neue'
-    fontFamily: 'Kohinoor Bangla',
+    fontFamily: 'Arial Rounded MT Bold',
+    color: colours.lightgrey,
     
 
     
@@ -319,10 +433,20 @@ const styles = StyleSheet.create({
       fontWeight: 'bold', 
       textAlign: 'center',
       color: colours.danger,
-      fontFamily: 'Arial-BoldMT',
+      fontFamily: 'Arial Rounded MT Bold',
       marginTop: 20,
       marginBottom: 0,
   },
+
+  subText2:{
+    fontSize: 15, 
+    fontWeight: 'bold', 
+    textAlign: 'center',
+    color: colours.lightgrey,
+    fontFamily: 'Arial Rounded MT Bold',
+    marginTop: 10,
+    marginBottom: 0,
+},
 
   spacer:{
     // paddingBottom: 20,
@@ -331,6 +455,30 @@ const styles = StyleSheet.create({
     // marginBottom: 20,
     // marginTop: 20,
   },
+
+  viewStyle:{
+    flexDirection: "row",
+    height: 100,
+    justifyContent: "center",
+    marginTop: 20,
+    },
+
+spacesBetween:{
+  paddingLeft: 11,
+  paddingRight: 11,
+  borderWidth: 2,
+  width: '40%',
+  marginRight: 12,
+  marginLeft: 12,
+  borderRadius: 15,
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 2,
+  elevation: 1,
+  shadowColor: colours.black,
+  backgroundColor: colours.lightblue,
+  
+},
 
 
 

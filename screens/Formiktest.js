@@ -545,7 +545,7 @@ function Formiktest(props) {
                    
     
     
-                    <Text style={styles.mainText}></Text>
+                    {/* <Text style={styles.mainText}></Text> */}
     
     
                 </ScrollView>   
@@ -644,11 +644,13 @@ const styles = StyleSheet.create({
         backgroundColor: colours.lightblue,
         flex: 1,
         paddingBottom: 20,
+
         
     },
 
     whiteBackground:{
         backgroundColor: colours.background,
+
 
     },
 
@@ -690,7 +692,7 @@ const styles = StyleSheet.create({
         color: colours.danger,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Kohinoor Bangla'
+        fontFamily: 'Arial Rounded MT Bold'
         
     },
 
@@ -704,7 +706,7 @@ const styles = StyleSheet.create({
         color: colours.reallyGrey,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Kohinoor Bangla',
+        fontFamily: 'Arial Rounded MT Bold',
 
         
     },
@@ -716,7 +718,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
-        fontFamily: 'Kohinoor Bangla',
+        fontFamily: 'Arial Rounded MT Bold',
         paddingHorizontal: 20,
         
     },
@@ -727,12 +729,14 @@ const styles = StyleSheet.create({
     },
 
     scroller:{
-        paddingTop: 40,
+        paddingTop: 20,
         backgroundColor: colours.white,
-        width: '90%',
+        width: '93%',
         alignSelf: 'center',
         borderTopStartRadius: 10,
         borderTopEndRadius: 10,
+        borderBottomStartRadius: 2,
+        borderBottomEndRadius: 2,
         
         
     },
@@ -744,14 +748,15 @@ const styles = StyleSheet.create({
     },
 
     spacesBetween2:{
-        paddingLeft: 15,
-        paddingRight: 15,
+        paddingLeft: 30,
+        // paddingRight: 15,
     },
 
     viewStyle:{
         flexDirection: "row",
         height: 100,
         justifyContent: "center",
+        
     },
 
 
@@ -776,7 +781,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
-        fontFamily: 'Arial-BoldMT',
+        fontFamily: 'Arial Rounded MT Bold',
         marginTop: 20,
         marginBottom: 0,
     },
@@ -790,7 +795,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: colours.danger,
         borderColor: colours.danger,
-        fontFamily: 'Arial-BoldMT',
+        fontFamily: 'Arial Rounded MT Bold',
         fontSize: 25,
         borderRadius: 15,
 
