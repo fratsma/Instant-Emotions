@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -145,6 +145,7 @@ function Formiktest(props) {
 
                 {({handleChange, handleSubmit, resetForm, values, setFieldValue})=>(
                     <>
+                        
                     <ScrollView style={styles.scroller}>
                     <View style={styles.viewStyle}>
     
@@ -550,6 +551,11 @@ function Formiktest(props) {
     
                 </ScrollView>   
 
+                <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+
                 <View style={styles.whiteBackground}>
     
                 <Text style={styles.subText}>Why are you feeling {values.feeling}?</Text>
@@ -620,6 +626,7 @@ function Formiktest(props) {
                 </View>
 
                 </View>
+                </KeyboardAvoidingView>
 
 
                 </>
@@ -644,12 +651,21 @@ const styles = StyleSheet.create({
         backgroundColor: colours.lightblue,
         flex: 1,
         paddingBottom: 20,
+        
+        
+
 
         
     },
 
     whiteBackground:{
         backgroundColor: colours.background,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        elevation: 1,
+        shadowColor: colours.black,
+        borderRadius: 10
 
 
     },
@@ -657,6 +673,7 @@ const styles = StyleSheet.create({
     emotions:{
         width: 70,
         height: 70,
+        
     },
 
     happy:{
@@ -725,7 +742,12 @@ const styles = StyleSheet.create({
 
     gap:{
         alignItems: 'center',
-        paddingBottom: 30
+        paddingBottom: 30,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        elevation: 1,
+        shadowColor: colours.black,
     },
 
     scroller:{
@@ -737,6 +759,9 @@ const styles = StyleSheet.create({
         borderTopEndRadius: 10,
         borderBottomStartRadius: 2,
         borderBottomEndRadius: 2,
+
+        
+
         
         
     },
@@ -744,6 +769,7 @@ const styles = StyleSheet.create({
     spacesBetween:{
         paddingLeft: 11,
         paddingRight: 11,
+
         
     },
 
@@ -756,6 +782,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         height: 100,
         justifyContent: "center",
+        
+
+        
+      
         
     },
 
@@ -771,7 +801,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         height: 70,
         justifyContent: "center",
-        
+
     },
 
     subText:{
@@ -799,10 +829,12 @@ const styles = StyleSheet.create({
         fontSize: 25,
         borderRadius: 15,
 
+
     },
 
     viewInput:{
         alignItems: 'center',
+        
         
     }
 

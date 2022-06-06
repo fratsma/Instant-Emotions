@@ -4,7 +4,7 @@ import colours from '../config/colours';
 
 
 
-function AppButton({title, onPress, color = "danger"}) {
+function AppButton({title, onPress, color = "lightblue"}) {
     return (
         <TouchableOpacity style={[styles.button, {backgroundColor: colours[color]}]} onPress={onPress}>
             
@@ -16,8 +16,8 @@ function AppButton({title, onPress, color = "danger"}) {
 
 const styles = StyleSheet.create({
     button:{
-        backgroundColor: colours.danger,
-        borderRadius: 25,
+        backgroundColor: colours.lightblue,
+        borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
         padding: 10,

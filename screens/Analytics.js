@@ -99,13 +99,14 @@ function Analytics(props) {
                 }
             >
                 
-            
+            <View style={styles.container}>
                 <View>
                     {emotions.map(x => {
                         return <DailyView2 key={x.time} props={x}/>
                     })}
 
                 </View> 
+            </View>
             
             </ScrollView>
 
@@ -155,19 +156,25 @@ const styles = StyleSheet.create({
     background:{
         backgroundColor: colours.lightblue,
         flex: 1,
-        paddingBottom: 20,
-        borderRadius: 15,
+        paddingBottom: 90,
+        // borderRadius: 15,
+        
     },
 
     whiteBackground:{
         backgroundColor: colours.white,
 
         borderRadius: 15,
+        paddingTop: 20,
+        
 
         
         
 
     },
+
+
+
 
     
     mainText:{
@@ -212,7 +219,8 @@ const styles = StyleSheet.create({
         paddingLeft: 40,
         alignContent: 'center',
         alignItems: 'center',
-        width: '60%'
+        width: '60%',
+        
         
         
     },
@@ -221,7 +229,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Arial Rounded MT Bold',
         fontSize: 15,
         justifyContent: 'center',
-        flex: 1
+        flex: 1,
+        
 
         
     },
@@ -232,6 +241,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // paddingLeft: 40,
         paddingTop: 10,
+        
 
     },
 
@@ -239,7 +249,8 @@ const styles = StyleSheet.create({
 
     emotions:{
         width: 80,
-        height: 80
+        height: 80,
+        
     },
 
     marginT:{
@@ -248,7 +259,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         borderTopStartRadius: 10,
         borderTopEndRadius: 10,
-        backgroundColor: colours.background
+        backgroundColor: colours.background, 
+        height: '100%',
+        paddingLeft: 5,
+        paddingRight: 5,
+        
         
     }
 })

@@ -12,7 +12,7 @@ const Stack = createStackNavigator
 const AuthNavigator = () =>(
     <Stack.Navigator>
         <Stack.Screen name="Home" component={Formiktest}/>
-        <Stack.Screen name="Day-to-Day" component={Analytics}/>
+        <Stack.Screen name="Daily View" component={Analytics}/>
         <Stack.Screen name="Analytics" component={AdvancedAnalytics}/>
     </Stack.Navigator>
 )

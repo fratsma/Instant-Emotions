@@ -1,8 +1,11 @@
 import React,  { Suspense, useState} from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList } from 'react-native';
 import { getDatabase, ref, onValue, set} from "firebase/database";
 import Moment from 'moment';
-import {getImage} from '../config/images'
+import {getImage} from '../config/images';
+import colours from '../config/colours';
+import DropShadow from "react-native-drop-shadow";
+// import { FlatList } from 'react-native-gesture-handler';
 
 
 Moment.suppressDeprecationWarnings = true;
@@ -17,6 +20,7 @@ function DailyView(props) {
 
     return (
 
+        <DropShadow style={styles.container}>
             <View style={styles.viewStyle}>
                     <Image style={styles.emotions} source={getImage(data.feeling)}/>
 
@@ -27,6 +31,9 @@ function DailyView(props) {
                         <Text style={styles.emotionSub}>{Moment(data.time).format('D MMM YYYY - h:mma ')}</Text>
                     </View>
             </View>
+        </DropShadow>
+
+        
     
 
     );
@@ -42,6 +49,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         textTransform: 'capitalize', 
+        
     },
 
     ViewReasons:{
@@ -49,7 +57,8 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         alignItems: 'center',
         width: '60%',
-        marginBottom: 20
+        marginBottom: 20,
+        
         
         
         
@@ -70,6 +79,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         // paddingLeft: 40,
         paddingTop: 10,
+        marginBottom: 10,
+        
+
+        borderColor: "#e6e6e6",
+        borderWidth: 1,
+        borderRadius: 10,
+        backgroundColor: colours.white,
+        
+
+        
 
     },
 
@@ -78,7 +97,20 @@ const styles = StyleSheet.create({
     emotions:{
         width: 80,
         height: 80
+        
     },
+
+    container:{
+        shadowColor: colours.black,
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+        elevation: 1,
+    }
+
+
+
+
 })
 
         // <View style={styles.viewStyle}>
