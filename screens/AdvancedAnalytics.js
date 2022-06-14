@@ -120,59 +120,53 @@ function AdvancedAnalytics(props) {
 
               }
 
-
-
-              
-
-
               console.log(streak)
-
-
-
-
-
 
 
             console.log("HEY")
             var i = numEntries 
             var oneBehind = numEntries - 1
-            // current = (Moment(streak[numEntries-1]).format('D MMM YYYY'))
-            // checker = (Moment(streak[numEntries-1]).subtract(1, 'days').format('D MMM YYYY'))
 
 
-
-            // console.log("checker")
-            // console.log(checker)
-            // console.log("CURRENT")
-            // console.log(current)
-
-
-
+            today = Moment(new Date()).format('D MMM YYYY')
             while (dater == false) {
-              current = (Moment(streak[i]).format('D MMM YYYY'))
-              checker = (Moment(streak[oneBehind]).subtract(1, 'days').format('D MMM YYYY'))
-
-              if (checker == current) {
+              if (Moment(streak[i]).format('D MMM YYYY') ==  today) {
                 count += 1
+                today = Moment(new Date()).subtract(1, 'days').format('D MMM YYYY')
                 i = i - 1
-                oneBehind = oneBehind - 1
+              }
+              else if (Moment(streak[i]).format('D MMM YYYY') ==  (Moment(streak[i-1]).format('D MMM YYYY'))) {
+                i = i - 1}
+              else {
+                dater = true
+              }}
+
+
+            // while (dater == false) {
+            //   current = (Moment(streak[i]).format('D MMM YYYY'))
+            //   checker = (Moment(streak[oneBehind]).subtract(1, 'days').format('D MMM YYYY'))
+
+            //   if (checker == current) {
+            //     count += 1
+            //     i = i - 1
+            //     oneBehind = oneBehind - 1
                 
 
-              }
+            //   }
 
-              else if ( Moment(checker).add(1, 'days').format('D MMM YYYY') == current) {
-                i = i - 1
-
-
-
-              }
-              else{
-                dater = true
+            //   else if ( Moment(checker).add(1, 'days').format('D MMM YYYY') == current) {
+            //     i = i - 1
 
 
-              }
 
-            }
+            //   }
+            //   else{
+            //     dater = true
+
+
+            //   }
+
+            // }
 
 
             console.log("count")
@@ -355,6 +349,19 @@ function AdvancedAnalytics(props) {
         console.log("HEY")
         var i = numEntries 
         var oneBehind = numEntries - 1
+
+        today = Moment(new Date()).format('D MMM YYYY')
+        while (dater == false) {
+          if (Moment(streak[i]).format('D MMM YYYY') ==  today) {
+            count += 1
+            today = Moment(new Date()).subtract(1, 'days').format('D MMM YYYY')
+            i = i - 1
+          }
+          else if (Moment(streak[i]).format('D MMM YYYY') ==  (Moment(streak[i-1]).format('D MMM YYYY'))) {
+            i = i - 1}
+          else {
+            dater = true
+          }}
         // current = (Moment(streak[numEntries-1]).format('D MMM YYYY'))
         // checker = (Moment(streak[numEntries-1]).subtract(1, 'days').format('D MMM YYYY'))
 
@@ -366,37 +373,37 @@ function AdvancedAnalytics(props) {
         // console.log(current)
         
 
-        while (dater == false) {
-          current = (Moment(streak[i]).format('D MMM YYYY'))
-          today = Moment(Date.now()).format('D MMM YYYY')
-          console.log(today)
+        // while (dater == false) {
+        //   current = (Moment(streak[i]).format('D MMM YYYY'))
+        //   today = Moment(Date.now()).format('D MMM YYYY')
+        //   console.log(today)
 
 
 
 
 
-          checker = (Moment(streak[oneBehind]).subtract(1, 'days').format('D MMM YYYY'))
-          if (checker == (Moment(streak[i]).format('D MMM YYYY'))) {
-            count += 1
-            i = i - 1
-            oneBehind = oneBehind - 1
+        //   checker = (Moment(streak[oneBehind]).subtract(1, 'days').format('D MMM YYYY'))
+        //   if (checker == (Moment(streak[i]).format('D MMM YYYY'))) {
+        //     count += 1
+        //     i = i - 1
+        //     oneBehind = oneBehind - 1
 
-          }
+        //   }
            
-          else if ( Moment(checker).add(1, 'days').format('D MMM YYYY') == current) {
-            count += 0
-            i = i - 1
+        //   else if ( Moment(checker).add(1, 'days').format('D MMM YYYY') == current) {
+        //     count += 0
+        //     i = i - 1
 
     
             
-          }
-          else{
-            dater = true
+        //   }
+        //   else{
+        //     dater = true
 
             
-          }
+        //   }
             
-        }
+        // }
 
 
         console.log("count")
@@ -473,41 +480,6 @@ function AdvancedAnalytics(props) {
 
             </View>
 
-
-            {/* <Text style={styles.subText}>Log Diary</Text>
-
-            <View style={{alignItems: 'center', marginRight: 50}}>
-                    <ContributionGraph
-                        values={commitsData}
-                        endDate={new Date()}
-                        numDays={365}
-                        width={400}
-
-                        height={300}
-                        squareSize={20}
-                        showMonthLabels={true}
-                        gutterSize={0}
-                        // horizontal={false}
-
-                        chartConfig={{
-                            backgroundColor: colours.white,
-                            backgroundGradientFrom: colours.white,
-                            backgroundGradientTo: colours.white,
-                            decimalPlaces: 2, // optional, defaults to 2dp
-                            color: (opacity = 1) => colours.lightblue,
-                            labelColor: (opacity = 1) => colours.black,
-                            style: {
-                              borderRadius: 16
-                            },
-                            propsForDots: {
-                              r: "6",
-                              strokeWidth: "2",
-                              stroke: "#ffa726"
-                            },
-                          }}
-
-/>
-                    </View> */}
 
 
                   
