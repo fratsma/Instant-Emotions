@@ -426,15 +426,17 @@ function Formiktest(props) {
                             <Text style={styles.sad}>Upset</Text>
     
                         </View>
-    
+
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "sad")}>
-                                <Image style={styles.emotions} source={require('../assets/sad.jpeg')}/>
+                            onPress={() => setFieldValue("feeling", "overwhelmed")}>
+                                <Image style={styles.emotions} source={require('../assets/overwhelmed.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.sad}>Sad</Text>
+                            <Text style={styles.sad}>Overwhelmed</Text>
     
                         </View>
+    
+
     
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
@@ -479,12 +481,14 @@ function Formiktest(props) {
     
                         </View>
     
+
+
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "annoyed")}>
-                                <Image style={styles.emotions} source={require('../assets/annoyed.jpeg')}/>
+                            onPress={() => setFieldValue("feeling", "disappointed")}>
+                                <Image style={styles.emotions} source={require('../assets/disappointed.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.sad}>Annoyed</Text>
+                            <Text style={styles.sad}>Disappointed</Text>
     
                         </View>
     
@@ -505,23 +509,27 @@ function Formiktest(props) {
                     <View style={styles.viewStyleBottom}>
     
                         
+
+
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "disappointed")}>
-                                <Image style={styles.emotions} source={require('../assets/disappointed.jpeg')}/>
+                            onPress={() => setFieldValue("feeling", "sad")}>
+                                <Image style={styles.emotions} source={require('../assets/sad.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.sad}>Disappointed</Text>
+                            <Text style={styles.sad}>Sad</Text>
+    
+                        </View>
+
+                        <View style={styles.spacesBetween}>
+                            <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
+                            onPress={() => setFieldValue("feeling", "annoyed")}>
+                                <Image style={styles.emotions} source={require('../assets/annoyed.jpeg')}/>
+                            </TouchableHighlight>
+                            <Text style={styles.sad}>Annoyed</Text>
     
                         </View>
     
-                        <View style={styles.spacesBetween}>
-                            <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "overwhelmed")}>
-                                <Image style={styles.emotions} source={require('../assets/overwhelmed.jpeg')}/>
-                            </TouchableHighlight>
-                            <Text style={styles.sad}>Overwhelmed</Text>
-    
-                        </View>
+
     
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
@@ -557,8 +565,9 @@ function Formiktest(props) {
     >
 
                 <View style={styles.whiteBackground}>
-    
+                    
                 <Text style={styles.subText}>Why are you feeling {values.feeling}?</Text>
+
     
                 <View style={styles.viewInput}>
                     <TextInput 
@@ -575,7 +584,7 @@ function Formiktest(props) {
                 <Text style={styles.subText}>Rate your mood: {values.mood}</Text>
     
                 <View style={styles.viewScore}>
-                    <View style={styles.spaceseBetween2}>
+                    <View style={styles.spacesBetween2}>
                         <TouchableOpacity  
                                 onPress={() => {setFieldValue("mood", "1"); setFieldValue("time", Date())}}>
                             <Text style={styles.mainText}>1</Text>
@@ -668,6 +677,14 @@ const styles = StyleSheet.create({
         borderRadius: 10
 
 
+    },
+
+    buttonContainer:{
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        elevation: 1,
+        shadowColor: colours.black,
     },
 
     emotions:{
@@ -774,8 +791,20 @@ const styles = StyleSheet.create({
     },
 
     spacesBetween2:{
-        paddingLeft: 30,
-        // paddingRight: 15,
+        width: "15%",
+        // borderColor: colours.grey,
+        borderColor: colours.lightblue,
+        
+        borderWidth: 1.5,
+        alignItems: 'center',
+        borderRadius: 50, 
+        margin: 3,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius:4,
+        elevation: 1,
+        shadowColor: colours.black,
+        backgroundColor: colours.white,
     },
 
     viewStyle:{
@@ -824,16 +853,23 @@ const styles = StyleSheet.create({
         width: 300,
         textAlign: 'center',
         color: colours.danger,
-        borderColor: colours.danger,
+        borderColor: colours.lightblue,
         fontFamily: 'Arial Rounded MT Bold',
         fontSize: 25,
         borderRadius: 15,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 1,
+        elevation: 1,
+        shadowColor: colours.black,
+        backgroundColor: colours.white,
 
 
     },
 
     viewInput:{
         alignItems: 'center',
+
         
         
     }
