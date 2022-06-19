@@ -48,7 +48,7 @@ function AdvancedAnalytics(props) {
       var red = 0
       var dater = false
   
-      var streak = []
+      var moodLine = []
       var time = 0
       // var count = 0
   
@@ -69,18 +69,23 @@ function AdvancedAnalytics(props) {
 
                 if (value["entry"]["mood"] == 1) {
                     mood1 += 1
+                    moodLine.push(1)
                 }
                 else if (value["entry"]["mood"] == 2) {
                     mood2 += 1
+                    moodLine.push(2)
                 }
                 else if (value["entry"]["mood"] == 3) {
                     mood3 += 1
+                    moodLine.push(3)
                 }
                 else if (value["entry"]["mood"] == 4) {
                     mood4 += 1
+                    moodLine.push(4)
                 }
                 else if (value["entry"]["mood"] == 5) {
                     mood5 += 1
+                    moodLine.push(5)
                 }
 
                 commitsData.push(
@@ -114,64 +119,18 @@ function AdvancedAnalytics(props) {
 
                 time = (value["entry"]["time"])
 
-                streak.push(Moment(time).format('D MMM YYYY'))
+                // streak.push(Moment(time).format('D MMM YYYY'))
 
 
 
               }
 
-              console.log(streak)
-
-
-            console.log("HEY")
-            var i = numEntries 
-            var oneBehind = numEntries - 1
-
-
-            today = Moment(new Date()).format('D MMM YYYY')
-            while (dater == false) {
-              if (Moment(streak[i]).format('D MMM YYYY') ==  today) {
-                count += 1
-                today = Moment(new Date()).subtract(1, 'days').format('D MMM YYYY')
-                i = i - 1
-              }
-              else if (Moment(streak[i]).format('D MMM YYYY') ==  (Moment(streak[i-1]).format('D MMM YYYY'))) {
-                i = i - 1}
-              else {
-                dater = true
-              }}
-
-
-            // while (dater == false) {
-            //   current = (Moment(streak[i]).format('D MMM YYYY'))
-            //   checker = (Moment(streak[oneBehind]).subtract(1, 'days').format('D MMM YYYY'))
-
-            //   if (checker == current) {
-            //     count += 1
-            //     i = i - 1
-            //     oneBehind = oneBehind - 1
-                
-
-            //   }
-
-            //   else if ( Moment(checker).add(1, 'days').format('D MMM YYYY') == current) {
-            //     i = i - 1
-
-
-
-            //   }
-            //   else{
-            //     dater = true
-
-
-            //   }
-
-            // }
+              // console.log(streak)
 
 
             console.log("count")
             console.log(count)
-            setNumStreak(count)
+            // setNumStreak(count)
 
 
 
@@ -194,6 +153,14 @@ function AdvancedAnalytics(props) {
             ]
           })
 
+          setLineData({
+            datasets: [{
+              data: moodLine,
+            }]
+          })
+
+          console.log(lineData)
+
           setPieData([
             {key: "Happy", count: green, color: colours.green},
             {key: "Sad", count: red, color: colours.red},
@@ -208,6 +175,8 @@ function AdvancedAnalytics(props) {
           }).catch((error) => {
           console.error(error);
           setRefreshing(false)
+
+          
       });
       }, []
       )
@@ -223,9 +192,13 @@ function AdvancedAnalytics(props) {
     const [graphData, setGraphData] = React.useState({})
     const [dictLength, setDictLength] = React.useState(0)
 
+    const [lineData, setLineData] = React.useState(0)
+
+
+
     const [numEntry, setNumEntry] = React.useState(0)
 
-    const [numStreak, setNumStreak] = React.useState(0)
+    // const [numStreak, setNumStreak] = React.useState(0)
 
     // var dictLength = 0
     // var graphData = {}
@@ -244,7 +217,7 @@ function AdvancedAnalytics(props) {
     var red = 0
     var dater = false
 
-    var streak = []
+    var moodLine = []
     var time = 0
     var count = 0
 
@@ -278,18 +251,23 @@ function AdvancedAnalytics(props) {
 
             if (value["entry"]["mood"] == 1) {
                 mood1 += 1
+                moodLine.push(1)
             }
             else if (value["entry"]["mood"] == 2) {
                 mood2 += 1
+                moodLine.push(2)
             }
             else if (value["entry"]["mood"] == 3) {
                 mood3 += 1
+                moodLine.push(3)
             }
             else if (value["entry"]["mood"] == 4) {
                 mood4 += 1
+                moodLine.push(4)
             }
             else if (value["entry"]["mood"] == 5) {
                 mood5 += 1
+                moodLine.push(5)
             }
 
             commitsData.push(
@@ -324,7 +302,7 @@ function AdvancedAnalytics(props) {
 
             time = (value["entry"]["time"])
 
-            streak.push(Moment(time).format('D MMM YYYY'))
+            // streak.push(Moment(time).format('D MMM YYYY'))
 
 
 
@@ -337,7 +315,7 @@ function AdvancedAnalytics(props) {
           console.log(graphData)
           console.log(mood3)
 
-          console.log(streak)
+          // console.log(streak)
 
           
 
@@ -346,69 +324,10 @@ function AdvancedAnalytics(props) {
 
         numEntries = Object.keys(data).length
 
-        console.log("HEY")
-        var i = numEntries 
-        var oneBehind = numEntries - 1
-
-        today = Moment(new Date()).format('D MMM YYYY')
-        while (dater == false) {
-          if (Moment(streak[i]).format('D MMM YYYY') ==  today) {
-            count += 1
-            today = Moment(new Date()).subtract(1, 'days').format('D MMM YYYY')
-            i = i - 1
-          }
-          else if (Moment(streak[i]).format('D MMM YYYY') ==  (Moment(streak[i-1]).format('D MMM YYYY'))) {
-            i = i - 1}
-          else {
-            dater = true
-          }}
-        // current = (Moment(streak[numEntries-1]).format('D MMM YYYY'))
-        // checker = (Moment(streak[numEntries-1]).subtract(1, 'days').format('D MMM YYYY'))
-
-
-
-        // console.log("checker")
-        // console.log(checker)
-        // console.log("CURRENT")
-        // console.log(current)
-        
-
-        // while (dater == false) {
-        //   current = (Moment(streak[i]).format('D MMM YYYY'))
-        //   today = Moment(Date.now()).format('D MMM YYYY')
-        //   console.log(today)
-
-
-
-
-
-        //   checker = (Moment(streak[oneBehind]).subtract(1, 'days').format('D MMM YYYY'))
-        //   if (checker == (Moment(streak[i]).format('D MMM YYYY'))) {
-        //     count += 1
-        //     i = i - 1
-        //     oneBehind = oneBehind - 1
-
-        //   }
-           
-        //   else if ( Moment(checker).add(1, 'days').format('D MMM YYYY') == current) {
-        //     count += 0
-        //     i = i - 1
-
-    
-            
-        //   }
-        //   else{
-        //     dater = true
-
-            
-        //   }
-            
-        // }
-
 
         console.log("count")
         console.log(count)
-        setNumStreak(count)
+        // setNumStreak(count)
 
         
 
@@ -430,6 +349,13 @@ function AdvancedAnalytics(props) {
           {data: [mood1, mood2, mood3, mood4, mood5]}
         ]
       })
+
+      setLineData({
+        datasets: [{
+          data: moodLine,
+        }]
+      })
+      // console.log(lineData)
 
       setPieData([
         {key: "Happy", count: green, color: colours.green},
@@ -472,10 +398,10 @@ function AdvancedAnalytics(props) {
                 <Text style={styles.mainText4}>{numEntry}</Text>
               </View>
 
-              <View style={styles.spacesBetween}>
+              {/* <View style={styles.spacesBetween}>
                 <Text style={styles.subText2}>Current Streak</Text>
                 <Text style={styles.mainText4}>{numStreak}</Text>
-              </View>
+              </View> */}
 
 
             </View>
@@ -497,9 +423,16 @@ function AdvancedAnalytics(props) {
                       height={220}
                       withInnerLines={false}
                       fromZero={true}
+                      // chartBreakPoints={[0, 1, 2, 3, 4, 5]}
+                      // hidePointsAtIndex={[0, 1, 2, 3, 4, 5]}
+                      // withHorizontalLabels={false}
                       
-                     
+
+                    
+         
                       chartConfig={{
+                        
+                        
                         backgroundColor: colours.white,
                         backgroundGradientFrom: colours.white,
                         backgroundGradientTo: colours.white,
@@ -507,9 +440,9 @@ function AdvancedAnalytics(props) {
                         decimalPlaces: 0, // optional, defaults to 2dp
                         color: (opacity = 1) => colours.grey,
                         labelColor: (opacity = 1) => colours.black,
-                        style: {
-                          borderRadius: 16
-                        },
+                        // style: {
+                        //   borderRadius: 16,
+                        // },
                         propsForDots: {
                           r: "6",
                           strokeWidth: "2",
@@ -518,10 +451,10 @@ function AdvancedAnalytics(props) {
                       }}
                       style={{
                         borderRadius: 16,
+
                     
                     
                       }}
-                      verticalLabelRotation={30}
 />
                     </View>
 
@@ -538,6 +471,55 @@ function AdvancedAnalytics(props) {
                       />
                     </View>
                     </View>
+                    
+
+                    <Text style={styles.subText}>Continuous Mood</Text>
+                      
+
+                    <View  style={styles.shadow2}>
+                      <LineChart 
+                        data={lineData}
+                        width={360}
+                        height={220}
+                        withInnerLines={false}
+                        fromZero={true}
+                        // chartBreakPoints={[0, 1, 2, 3, 4, 5]}
+                        // hidePointsAtIndex={[0, 1, 2, 3, 4, 5]}
+                        // withHorizontalLabels={false}
+                        
+  
+                      
+           
+                        chartConfig={{
+                          
+                          
+                          backgroundColor: colours.white,
+                          backgroundGradientFrom: colours.white,
+                          backgroundGradientTo: colours.white,
+                          
+                          decimalPlaces: 0, // optional, defaults to 2dp
+                          color: (opacity = 1) => colours.grey,
+                          labelColor: (opacity = 1) => colours.black,
+                          // style: {
+                          //   borderRadius: 16,
+                          // },
+                          propsForDots: {
+                            r: "6",
+                            strokeWidth: "2",
+                            stroke: "#ffa726"
+                          }
+                        }}
+                        style={{
+                          borderRadius: 16,
+                          // marginBottom: 50
+  
+                      
+                      
+                        }}
+
+                      />
+                    </View>
+
 
             </ScrollView>
 
@@ -632,7 +614,7 @@ const styles = StyleSheet.create({
 },
 
   subText2:{
-    fontSize: 15, 
+    fontSize: 17, 
     fontWeight: 'bold', 
     textAlign: 'center',
     color: colours.lightgrey,
@@ -644,10 +626,18 @@ const styles = StyleSheet.create({
   spacer:{
     // paddingBottom: 20,
     paddingTop: 10,
-    marginBottom: 120,
+    marginBottom: 10,
     // marginBottom: 20,
     // marginTop: 20,
   },
+
+  // spacer2:{
+  //   // paddingBottom: 20,
+  //   // paddingTop: 10,
+  //   marginBottom: 500,
+  //   // marginBottom: 20,
+  //   // marginTop: 20,
+  // },
 
   viewStyle:{
     flexDirection: "row",
@@ -660,7 +650,7 @@ spacesBetween:{
   paddingLeft: 11,
   paddingRight: 11,
   borderWidth: 2,
-  width: '40%',
+  width: '60%',
   marginRight: 12,
   marginLeft: 12,
   borderRadius: 15,
@@ -675,12 +665,23 @@ spacesBetween:{
 
 shadow:{
   alignItems: 'center',
-  // marginLeft: '10%',
   shadowOffset: { width: 0, height: 2 },
   shadowOpacity: 0.5,
   shadowRadius: 5,
   elevation: 1,
   shadowColor: colours.black,
+
+},
+
+shadow2:{
+  alignItems: 'center',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.5,
+  shadowRadius: 5,
+  elevation: 1,
+  shadowColor: colours.black,
+  marginBottom: 120,
+  marginTop: 10,
 
 }
 

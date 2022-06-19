@@ -574,6 +574,7 @@ function Formiktest(props) {
                         style={styles.input}
                         onChangeText={handleChange("reason")}
                         maxLength={19}
+                        clearButtonMode="always"
                         
                         
                     />
