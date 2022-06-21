@@ -14,12 +14,16 @@ import {
 
 import PieChart from 'react-native-expo-pie-chart';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
+import Svg,{Line} from 'react-native-svg';
 
 import Moment from 'moment';
 import {getImage} from '../config/images'
+import { LogBox } from 'react-native';
+
 
 
 Moment.suppressDeprecationWarnings = true;
+
 
 
 
@@ -57,7 +61,7 @@ function AdvancedAnalytics(props) {
         const emotionsRef = ref(db, 'users/' + global.uid);
         get(emotionsRef).then((snapshot) => {
           if (snapshot.exists()) {
-              console.log("yays")
+              // console.log("yays")
               var data = snapshot.val();
             var x = 0
             numEntries = Object.keys(data).length
@@ -128,8 +132,8 @@ function AdvancedAnalytics(props) {
               // console.log(streak)
 
 
-            console.log("count")
-            console.log(count)
+            // console.log("count")
+            // console.log(count)
             // setNumStreak(count)
 
 
@@ -138,11 +142,11 @@ function AdvancedAnalytics(props) {
 
             // console.log(numEntries)
 
-            console.log(Object.values(data)[0]["entry"]["reason"])
+            // console.log(Object.values(data)[0]["entry"]["reason"])
 
-            setDictLength( Object.keys(graphData).length -1)
-            console.log(dictLength)
-            console.log(new Date(graphData[dictLength]))
+            // setDictLength( Object.keys(graphData).length -1)
+            // console.log(dictLength)
+            // console.log(new Date(graphData[dictLength]))
 
             setNumEntry(numEntries)
 
@@ -159,7 +163,7 @@ function AdvancedAnalytics(props) {
             }]
           })
 
-          console.log(lineData)
+          // console.log(lineData)
 
           setPieData([
             {key: "Happy", count: green, color: colours.green},
@@ -172,7 +176,8 @@ function AdvancedAnalytics(props) {
             setRefreshing(false)
               // console.log("No data available");
           }
-          }).catch((error) => {
+          })
+          .catch((error) => {
           console.error(error);
           setRefreshing(false)
 
@@ -187,13 +192,23 @@ function AdvancedAnalytics(props) {
             {data: []}
           ]
         })
+
+
+    const [lineData, setLineData] = React.useState({
+      datasets: [{
+        data: [],}]
+    })
+    
     const [pieData, setPieData] = React.useState([])
     const [commitsData, setCommitsData] = React.useState([])
     const [graphData, setGraphData] = React.useState({})
     const [dictLength, setDictLength] = React.useState(0)
 
-    const [lineData, setLineData] = React.useState(0)
+    // const [lineData, setLineData] = React.useState(0)
 
+
+
+    // const [lineData, setLineData] = React.useState()
 
 
     const [numEntry, setNumEntry] = React.useState(0)
@@ -222,7 +237,6 @@ function AdvancedAnalytics(props) {
     var count = 0
 
     var numEntries = 0
-    var lineValues = {}
     // var lineObj = []
 
     const db = getDatabase();
@@ -240,7 +254,7 @@ function AdvancedAnalytics(props) {
   
       get(emotionsRef).then((snapshot) => {
       if (snapshot.exists()) {
-          console.log("yays")
+          // console.log("yays")
           var data = snapshot.val();
         var x = 0
 
@@ -312,8 +326,8 @@ function AdvancedAnalytics(props) {
 
           }
 
-          console.log(graphData)
-          console.log(mood3)
+          // console.log(graphData)
+          // console.log(mood3)
 
           // console.log(streak)
 
@@ -325,23 +339,22 @@ function AdvancedAnalytics(props) {
         numEntries = Object.keys(data).length
 
 
-        console.log("count")
-        console.log(count)
-        // setNumStreak(count)
+        // console.log("count")
+        // console.log(count)
 
-        
-
-
-
-        // console.log(numEntries)
-
-        console.log(Object.values(data)[0]["entry"]["reason"])
+        // console.log(Object.values(data)[0]["entry"]["reason"])
 
         setDictLength( Object.keys(graphData).length -1)
-        console.log(dictLength)
-        console.log(new Date(graphData[dictLength]))
+
 
         setNumEntry(numEntries)
+
+        setLineData({
+          datasets: [{
+            data: moodLine,
+          }]
+        })
+        
 
       setBarData({
         labels: ["1", "2", "3", "4", "5"],
@@ -350,12 +363,7 @@ function AdvancedAnalytics(props) {
         ]
       })
 
-      setLineData({
-        datasets: [{
-          data: moodLine,
-        }]
-      })
-      // console.log(lineData)
+
 
       setPieData([
         {key: "Happy", count: green, color: colours.green},
@@ -481,15 +489,12 @@ function AdvancedAnalytics(props) {
                         data={lineData}
                         width={360}
                         height={220}
+                        bezier
                         withInnerLines={false}
                         fromZero={true}
                         // chartBreakPoints={[0, 1, 2, 3, 4, 5]}
                         // hidePointsAtIndex={[0, 1, 2, 3, 4, 5]}
                         // withHorizontalLabels={false}
-                        
-  
-                      
-           
                         chartConfig={{
                           
                           
@@ -503,11 +508,11 @@ function AdvancedAnalytics(props) {
                           // style: {
                           //   borderRadius: 16,
                           // },
-                          propsForDots: {
-                            r: "6",
-                            strokeWidth: "2",
-                            stroke: "#ffa726"
-                          }
+                          // propsForDots: {
+                          //   r: "0",
+                          //   strokeWidth: "2",
+                          //   stroke: "#ffa726"
+                          // }
                         }}
                         style={{
                           borderRadius: 16,
