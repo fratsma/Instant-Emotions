@@ -27,7 +27,7 @@ function DailyView(props) {
                     <View style={styles.ViewReasons}>
                         <Text style={styles.emotionText}>{data.feeling}</Text>
                         <Text style={styles.emotionSub}>Reason: {data.reason}</Text>
-                        <Text style={styles.emotionSub}>Value: {data.mood}</Text>
+                        <Text style={styles.emotionSub}>Mood: {data.mood}</Text>
                         <Text style={styles.emotionSub}>{Moment(data.time).format('D MMM YYYY - h:mma ')}</Text>
                     </View>
             </View>

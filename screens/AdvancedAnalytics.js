@@ -159,7 +159,7 @@ function AdvancedAnalytics(props) {
 
           setLineData({
             datasets: [{
-              data: moodLine,
+              data: moodLine
             }]
           })
 
@@ -196,7 +196,7 @@ function AdvancedAnalytics(props) {
 
     const [lineData, setLineData] = React.useState({
       datasets: [{
-        data: [],}]
+        data: []}]
     })
     
     const [pieData, setPieData] = React.useState([])
@@ -351,7 +351,7 @@ function AdvancedAnalytics(props) {
 
         setLineData({
           datasets: [{
-            data: moodLine,
+            data: moodLine
           }]
         })
         

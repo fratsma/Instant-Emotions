@@ -14,6 +14,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Moment from 'moment';
 import {getImage} from '../config/images'
 import DailyView from '../components/DailyView';
+import { Audio } from 'expo-av';
 
 
 
@@ -31,6 +32,7 @@ import App from '../App';
 
 function storeData(values, {resetForm}){
 
+    
 
     const db = getDatabase();
     const reference = ref(db, 'users/' + global.uid);
@@ -133,10 +135,10 @@ function Formiktest(props) {
 
             <Formik
                 initialValues={{
-                    feeling: '',
-                    reason: '',
+                    feeling: 'confused',
+                    reason: 'no input',
                     mood: '',
-                    time: '',
+                    time: Date(),
                 }}
                 // onSubmit={(values)=> console.log(values)}
                 onSubmit={storeData}
@@ -386,10 +388,10 @@ function Formiktest(props) {
     
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "depend")}>
+                            onPress={() => setFieldValue("feeling", "relaxed")}>
                                 <Image style={styles.emotions} source={require('../assets/dependable.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.straight}>Depend</Text>
+                            <Text style={styles.straight}>Relaxed</Text>
     
                         </View>
     
@@ -587,7 +589,7 @@ function Formiktest(props) {
     
                 <View style={styles.viewScore}>
                     <View style={styles.spacesBetween2}>
-                        <TouchableOpacity  
+                        <TouchableOpacity 
                                 onPress={() => {setFieldValue("mood", "1"); setFieldValue("time", Date())}}>
                             <Text style={styles.mainText}>1</Text>
                         </TouchableOpacity>
@@ -632,6 +634,9 @@ function Formiktest(props) {
     
                 <View style={styles.gap}>
                     <AppButton type="submit" onPress={handleSubmit} title="submit"/>
+
+
+
                     
                 
                 </View>
