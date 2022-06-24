@@ -113,23 +113,7 @@ const styles = StyleSheet.create({
 
 })
 
-        // <View style={styles.viewStyle}>
-        //         <Image style={styles.emotions} source={itemImage}/>
-        //         <View style={styles.ViewReasons}>
-        //             <Text style={styles.emotionText}>{itemEmotion}</Text>
-        //             <Text style={styles.emotionSub}>Reason: {itemReason}</Text>
-        //             <Text style={styles.emotionSub}>Mood: {itemMood}</Text>
-        //             <Text style={styles.emotionSub}>{itemTime}</Text>
-        //         </View>
-        // </View>
 
-            //     // item2Emotion = Object.values(data)[numEntries-2]["entry"]["feeling"]
-    //     // item2Reason = Object.values(data)[numEntries-2]["entry"]["reason"]
-    //     // item2Mood = Object.values(data)[numEntries-2]["entry"]["mood"]
-    //     // item2Time = Object.values(data)[numEntries-2]["entry"]["time"]
-
-    //     // item2Time = Moment(item2Time).format('D MMM YYYY - h:mma ')
-    //     // item2Image = getImage(item2Emotion)
 
 
 export default DailyView;

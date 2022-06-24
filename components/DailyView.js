@@ -9,27 +9,6 @@ import {getImage} from '../config/images'
 function DailyView({itemImage, itemEmotion, itemReason, itemMood, itemTime}) {
 
     
-    // const db = getDatabase();
-    // const getEmotions = ref(db, 'users/' + global.uid);
-    // onValue(getEmotions, (snapshot)=>{
-    //     var data = snapshot.val();
-
-    //     for (const value of Object.values(data)) {
-    //         console.log(value["entry"]["feeling"])
-    //       }
-
-    //     const numEntries = Object.keys(data).length
-    //     console.log(numEntries)
-
-    //     console.log(Object.values(data)[0]["entry"]["reason"])
-    //     global.item1Emotion = Object.values(data)[numEntries-1]["entry"]["feeling"]
-    //     global.item1Reason = Object.values(data)[numEntries-1]["entry"]["reason"]
-    //     global.item1Mood = Object.values(data)[numEntries-1]["entry"]["mood"]
-    //     global.item1Time = Object.values(data)[numEntries-1]["entry"]["time"]
-    //     global.item1Time = Moment(global.item1Time).format('D MMM YYYY - h:mma ')
-    //     global.item1Image = getImage(global.item1Emotion)
-        
-    // })
 
 
 

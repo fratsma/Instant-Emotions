@@ -160,11 +160,10 @@ function AdvancedAnalytics(props) {
             ]
           })
 
-          setLineData({
-            datasets: [{
-              data: moodLine
-            }]
-          })
+          setLineData(
+            moodLine
+
+        )
 
           // console.log(lineData)
 
@@ -654,6 +653,7 @@ shadow2:{
   marginBottom: 120,
   marginTop: 10,
 
+  
 }
 
 

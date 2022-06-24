@@ -8,8 +8,6 @@ import Moment from 'moment';
 import {getImage} from '../config/images'
 import DailyView2 from '../components/DailyView2';
 import { render } from 'react-dom';
-import { databaseEmotions } from '../config/emotions';
-import EmotionsTry2 from '../config/EmotionsTry2';
 import Formiktest from './Formiktest';
 import AppButton from '../components/AppButton';
 
