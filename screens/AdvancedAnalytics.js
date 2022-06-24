@@ -4,7 +4,6 @@ import colours from '../config/colours';
 // import { Text } from 'react-native';
 import Screen from '../components/Screen';
 import {
-    LineChart,
     BarChart,
     // PieChart,
     ProgressChart,
@@ -12,14 +11,18 @@ import {
     StackedBarChart
   } from "react-native-chart-kit";
 
+  // import { LineChart } from 'react-native-chart-kit'
+
 import PieChart from 'react-native-expo-pie-chart';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
-import Svg,{Line} from 'react-native-svg';
+// import Svg,{Line} from 'react-native-svg';
+
 
 import Moment from 'moment';
 import {getImage} from '../config/images'
 import { LogBox } from 'react-native';
 
+import PureChart from 'react-native-pure-chart';
 
 
 Moment.suppressDeprecationWarnings = true;
@@ -232,7 +235,7 @@ function AdvancedAnalytics(props) {
     var red = 0
     var dater = false
 
-    var moodLine = []
+    var moodLine = [0]
     var time = 0
     var count = 0
 
@@ -349,11 +352,10 @@ function AdvancedAnalytics(props) {
 
         setNumEntry(numEntries)
 
-        setLineData({
-          datasets: [{
-            data: moodLine
-          }]
-        })
+        setLineData(
+            moodLine
+
+        )
         
 
       setBarData({
@@ -473,7 +475,7 @@ function AdvancedAnalytics(props) {
 
                     <View style={styles.shadow}>
 
-                    <PieChart
+                    <PieChart 
                       data={pieData}
                       length={200}
                       />
@@ -482,49 +484,13 @@ function AdvancedAnalytics(props) {
                     
 
                     <Text style={styles.subText}>Continuous Mood</Text>
-                      
 
-                    <View  style={styles.shadow2}>
-                      <LineChart 
-                        data={lineData}
-                        width={360}
-                        height={220}
-                        bezier
-                        withInnerLines={false}
-                        fromZero={true}
-                        // chartBreakPoints={[0, 1, 2, 3, 4, 5]}
-                        // hidePointsAtIndex={[0, 1, 2, 3, 4, 5]}
-                        // withHorizontalLabels={false}
-                        chartConfig={{
-                          
-                          
-                          backgroundColor: colours.white,
-                          backgroundGradientFrom: colours.white,
-                          backgroundGradientTo: colours.white,
-                          
-                          decimalPlaces: 0, // optional, defaults to 2dp
-                          color: (opacity = 1) => colours.grey,
-                          labelColor: (opacity = 1) => colours.black,
-                          // style: {
-                          //   borderRadius: 16,
-                          // },
-                          // propsForDots: {
-                          //   r: "0",
-                          //   strokeWidth: "2",
-                          //   stroke: "#ffa726"
-                          // }
-                        }}
-                        style={{
-                          borderRadius: 16,
-                          // marginBottom: 50
-  
-                      
-                      
-                        }}
+              <View style={styles.shadow2}>
 
-                      />
-                    </View>
+                <PureChart data={lineData} type='line' />
 
+              </View>
+ 
 
             </ScrollView>
 
