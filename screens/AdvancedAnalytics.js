@@ -49,11 +49,15 @@ function AdvancedAnalytics(props) {
       var checker = 0
       var current = 0
       var today = 0
+      var averageRecent = 0
+      var recentMood = 0
+      var percentageChange = 0
   
       var green = 0
       var grey = 0
       var red = 0
       var dater = false
+      var recent = 0
   
       var moodLine = []
       var time = 0
@@ -69,6 +73,12 @@ function AdvancedAnalytics(props) {
             var x = 0
             numEntries = Object.keys(data).length
 
+            // console.log(Object.values(data))
+
+
+
+
+
             for (const value of Object.values(data)) {
                 // console.log(value["entry"]["time"])
                 graphData[numEntries-1] = (value["entry"]["time"])
@@ -77,23 +87,37 @@ function AdvancedAnalytics(props) {
                 if (value["entry"]["mood"] == 1) {
                     mood1 += 1
                     moodLine.push(1)
+                    recent += 1
+                    recentMood = 1
                 }
                 else if (value["entry"]["mood"] == 2) {
                     mood2 += 1
                     moodLine.push(2)
+                    recent += 2
+                    recentMood = 2
                 }
                 else if (value["entry"]["mood"] == 3) {
                     mood3 += 1
                     moodLine.push(3)
+                    recent += 3
+                    recentMood = 3
                 }
                 else if (value["entry"]["mood"] == 4) {
                     mood4 += 1
                     moodLine.push(4)
+                    recent += 4
+                    recentMood = 4
                 }
                 else if (value["entry"]["mood"] == 5) {
                     mood5 += 1
                     moodLine.push(5)
+                    recent += 5
+                    recentMood = 5
                 }
+
+              
+                
+                // console.log(recent)
 
                 commitsData.push(
                   {date: graphData[x], count: 1}
@@ -102,24 +126,24 @@ function AdvancedAnalytics(props) {
                 x=x+1
 
                 if (value["entry"]["feeling"] == "happy" || value["entry"]["feeling"] == "excited" || value["entry"]["feeling"] == "amazed" 
-                    || value["entry"]["feeling"] == "amused" || value["entry"]["feeling"] == "admiration" || value["entry"]["feeling"] == "nostalgic"
-                    || value["entry"]["feeling"] == "rested" || value["entry"]["feeling"] == "passionate" || value["entry"]["feeling"] == "relieved"
-                    || value["entry"]["feeling"] == "blissful" || value["entry"]["feeling"] == "proud") {
-                    green += 1
-                }
-                else if (value["entry"]["feeling"] == "sad" || value["entry"]["feeling"] == "upset" || value["entry"]["feeling"] == "scared"
-                    || value["entry"]["feeling"] == "stressed" || value["entry"]["feeling"] == "anxious" || value["entry"]["feeling"] == "unwell"
-                    || value["entry"]["feeling"] == "annoyed" || value["entry"]["feeling"] == "frustrated" || value["entry"]["feeling"] == "disappointed"
-                    || value["entry"]["feeling"] == "overwhelmed" || value["entry"]["feeling"] == "jealous" || value["entry"]["feeling"] == "humiliated"){
-                    red += 1
-                }
+                || value["entry"]["feeling"] == "amused" || value["entry"]["feeling"] == "admiration" || value["entry"]["feeling"] == "nostalgic"
+                || value["entry"]["feeling"] == "rested" || value["entry"]["feeling"] == "passionate" || value["entry"]["feeling"] == "relieved"
+                || value["entry"]["feeling"] == "blissful" || value["entry"]["feeling"] == "proud" || value["entry"]["feeling"] == "love") {
+                green += 1
+            }
+            else if (value["entry"]["feeling"] == "sad" || value["entry"]["feeling"] == "upset" || value["entry"]["feeling"] == "scared"
+                || value["entry"]["feeling"] == "stressed" || value["entry"]["feeling"] == "anxious" || value["entry"]["feeling"] == "unwell"
+                || value["entry"]["feeling"] == "annoyed" || value["entry"]["feeling"] == "frustrated" || value["entry"]["feeling"] == "disappointed"
+                || value["entry"]["feeling"] == "overwhelmed" || value["entry"]["feeling"] == "jealous" || value["entry"]["feeling"] == "humiliated"){
+                red += 1
+            }
 
-                else if (value["entry"]["feeling"] == "content" || value["entry"]["feeling"] == "meh" || value["entry"]["feeling"] == "emotional"
-                    || value["entry"]["feeling"] == "confused" || value["entry"]["feeling"] == "hungry" || value["entry"]["feeling"] == "awkward"
-                    || value["entry"]["feeling"] == "tired" || value["entry"]["feeling"] == "shy" || value["entry"]["feeling"] == "shocked"
-                    || value["entry"]["feeling"] == "depend" || value["entry"]["feeling"] == "sympathy" || value["entry"]["feeling"] == "guilty"){
-                    grey += 1
-                }
+            else if (value["entry"]["feeling"] == "content" || value["entry"]["feeling"] == "meh" || value["entry"]["feeling"] == "emotional"
+                || value["entry"]["feeling"] == "confused" || value["entry"]["feeling"] == "hungry" || value["entry"]["feeling"] == "awkward"
+                || value["entry"]["feeling"] == "tired" || value["entry"]["feeling"] == "shy" || value["entry"]["feeling"] == "shocked"
+                || value["entry"]["feeling"] == "depend" || value["entry"]["feeling"] == "sympathy" || value["entry"]["feeling"] == "guilty"){
+                grey += 1
+            }
 
 
 
@@ -151,7 +175,22 @@ function AdvancedAnalytics(props) {
             // console.log(dictLength)
             // console.log(new Date(graphData[dictLength]))
 
-            setNumEntry(numEntries)
+          
+          setNumEntry(numEntries)
+          averageRecent = recent / numEntries
+
+          // console.log("FINAL")
+          // console.log(averageRecent)
+          // console.log(recentMood)
+
+          // percentageChange = (averageRecent - recentMood)/averageRecent
+          percentageChange = (recentMood - averageRecent) / recentMood
+          percentageChange = percentageChange * 100
+          percentageChange = percentageChange.toFixed(2)
+          // console.log(percentageChange)
+
+          setMoodData(percentageChange)
+
 
           setBarData({
             labels: ["1", "2", "3", "4", "5"],
@@ -196,15 +235,13 @@ function AdvancedAnalytics(props) {
         })
 
 
-    const [lineData, setLineData] = React.useState({
-      datasets: [{
-        data: []}]
-    })
+    const [lineData, setLineData] = React.useState([])
     
     const [pieData, setPieData] = React.useState([])
     const [commitsData, setCommitsData] = React.useState([])
     const [graphData, setGraphData] = React.useState({})
     const [dictLength, setDictLength] = React.useState(0)
+    const [moodData, setMoodData] = React.useState(0)
 
     // const [lineData, setLineData] = React.useState(0)
 
@@ -228,11 +265,15 @@ function AdvancedAnalytics(props) {
     var checker = 0
     var current = 0
     var today = 0
+    var recentMood = 0
+    var percentageChange = 0
 
     var green = 0
     var grey = 0
     var red = 0
     var dater = false
+    var recent = 0
+    var averageRecent = 0
 
     var moodLine = [0]
     var time = 0
@@ -265,26 +306,37 @@ function AdvancedAnalytics(props) {
             graphData[x] = (value["entry"]["time"])
             // console.log(value["entry"]["mood"])
 
+
             if (value["entry"]["mood"] == 1) {
-                mood1 += 1
-                moodLine.push(1)
-            }
-            else if (value["entry"]["mood"] == 2) {
-                mood2 += 1
-                moodLine.push(2)
-            }
-            else if (value["entry"]["mood"] == 3) {
-                mood3 += 1
-                moodLine.push(3)
-            }
-            else if (value["entry"]["mood"] == 4) {
-                mood4 += 1
-                moodLine.push(4)
-            }
-            else if (value["entry"]["mood"] == 5) {
-                mood5 += 1
-                moodLine.push(5)
-            }
+              mood1 += 1
+              moodLine.push(1)
+              recent += 1
+              recentMood = 1
+          }
+          else if (value["entry"]["mood"] == 2) {
+              mood2 += 1
+              moodLine.push(2)
+              recent += 2
+              recentMood = 2
+          }
+          else if (value["entry"]["mood"] == 3) {
+              mood3 += 1
+              moodLine.push(3)
+              recent += 3
+              recentMood = 3
+          }
+          else if (value["entry"]["mood"] == 4) {
+              mood4 += 1
+              moodLine.push(4)
+              recent += 4
+              recentMood = 4
+          }
+          else if (value["entry"]["mood"] == 5) {
+              mood5 += 1
+              moodLine.push(5)
+              recent += 5
+              recentMood = 5
+          }
 
             commitsData.push(
               {date: graphData[x], count: 1}
@@ -340,6 +392,18 @@ function AdvancedAnalytics(props) {
 
         numEntries = Object.keys(data).length
 
+        averageRecent = recent / numEntries
+
+          // console.log("FINAL")
+          // console.log(averageRecent)
+          // console.log(recentMood)
+
+          percentageChange = (recentMood - averageRecent) / recentMood
+          percentageChange = percentageChange * 100
+          percentageChange = percentageChange.toFixed(2)
+          // console.log(percentageChange)
+
+          setMoodData(percentageChange)
 
         // console.log("count")
         // console.log(count)
@@ -403,8 +467,13 @@ function AdvancedAnalytics(props) {
               
 
               <View style={styles.spacesBetween}>
-                <Text style={styles.subText2}>Number of Entries</Text>
+                <Text style={styles.subText2}>Entry Count</Text>
                 <Text style={styles.mainText4}>{numEntry}</Text>
+              </View>
+
+              <View style={styles.spacesBetween}>
+                <Text style={styles.subText2}>Mood Difference</Text>
+                <Text style={styles.mainText4}>{moodData}%</Text>
               </View>
 
               {/* <View style={styles.spacesBetween}>
@@ -617,12 +686,12 @@ const styles = StyleSheet.create({
     },
 
 spacesBetween:{
-  paddingLeft: 11,
-  paddingRight: 11,
+  // paddingLeft: 8,
+  // paddingRight: 8,
   borderWidth: 2,
-  width: '60%',
-  marginRight: 12,
-  marginLeft: 12,
+  width: '45%',
+  marginRight: 8,
+  marginLeft: 8,
   borderRadius: 15,
   shadowOffset: { width: 0, height: 2 },
   shadowOpacity: 0.2,
