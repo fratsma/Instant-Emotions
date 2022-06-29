@@ -11,11 +11,9 @@ import {
     StackedBarChart
   } from "react-native-chart-kit";
 
-  // import { LineChart } from 'react-native-chart-kit'
 
 import PieChart from 'react-native-expo-pie-chart';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
-// import Svg,{Line} from 'react-native-svg';
 
 
 import Moment from 'moment';
@@ -608,7 +606,7 @@ const styles = StyleSheet.create({
 
 
   mainText4:{
-    fontSize: 40, 
+    fontSize: 35, 
     paddingTop: 5,
     paddingBottom: 10,
     fontWeight: 'bold', 
@@ -689,7 +687,7 @@ spacesBetween:{
   // paddingLeft: 8,
   // paddingRight: 8,
   borderWidth: 2,
-  width: '45%',
+  width: '42%',
   marginRight: 8,
   marginLeft: 8,
   borderRadius: 15,

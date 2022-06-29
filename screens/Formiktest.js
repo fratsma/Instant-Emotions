@@ -14,7 +14,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Moment from 'moment';
 import {getImage} from '../config/images'
 import DailyView from '../components/DailyView';
-import { Audio } from 'expo-av';
+import * as yup from 'yup';
 
 
 
@@ -47,78 +47,15 @@ function storeData(values, {resetForm}){
     
 }
 
-// function storeData(values){
-//     console.log(values)
-// }
-
-
-// function storeData(){
-//     database()
-//         .ref('/users/1')
-//         .set({
-//             name: 'FREDDIE',
-//             age: 19
-//         })
-//         console.log("Data set")
-// }
-
-
-// const storeData = async (values) => {
-//     try {
-//       const jsonValue = JSON.stringify(values)
-//       await AsyncStorage.setItem('@storage_Key', jsonValue)
-//       alert(jsonValue)
-      
-//     } catch (e) {
-//       // saving error
-//     }
-//   }
-
-
-// function getData(){}
-// //     const dbRef = sRef(getDatabase)
-// //     get(child(dbRef, 'entry')).then((snapshot) =>{
-// //         if (snapshot.exists()){
-// //             console.log(snapshot.val());
-
-// //         } else{
-// //             console.log("No Data Available")
-// //         }
-// //     })
-// // }
-
-
     
 
 function Formiktest(props) {
-    // const db = getDatabase();
-    // const getEmotions = ref(db, 'users/' + global.uid);
-    // onValue(getEmotions, (snapshot)=>{
-    //     var data = snapshot.val();
 
-    //     for (const value of Object.values(data)) {
-    //         console.log(value["entry"]["feeling"])
-    //       }
+    let formSchema = yup.object().shape({
+        feeling: yup.string().required(),
+        mood: yup.number().required()
+    })
 
-    //     const numEntries = Object.keys(data).length
-    //     console.log(numEntries)
-
-    //     console.log(Object.values(data)[0]["entry"]["reason"])
-    //     global.item1Emotion = Object.values(data)[numEntries-1]["entry"]["feeling"]
-    //     global.item1Reason = Object.values(data)[numEntries-1]["entry"]["reason"]
-    //     global.item1Mood = Object.values(data)[numEntries-1]["entry"]["mood"]
-    //     global.item1Time = Object.values(data)[numEntries-1]["entry"]["time"]
-    //     global.item1Time = Moment(global.item1Time).format('D MMM YYYY - h:mma ')
-    //     global.item1Image = getImage(global.item1Emotion)
-
-
-    //     item2Emotion = Object.values(data)[numEntries-2]["entry"]["feeling"]
-    //     item2Reason = Object.values(data)[numEntries-2]["entry"]["reason"]
-    //     item2Mood = Object.values(data)[numEntries-2]["entry"]["mood"]
-    //     item2Time = Object.values(data)[numEntries-2]["entry"]["time"]
-
-    //     item2Time = Moment(item2Time).format('D MMM YYYY - h:mma ')
-    //     item2Image = getImage(item2Emotion)
 
 
         
@@ -135,11 +72,12 @@ function Formiktest(props) {
 
             <Formik
                 initialValues={{
-                    feeling: 'confused',
+                    feeling: '-',
                     reason: 'no input',
                     mood: '',
                     time: Date(),
                 }}
+                validationSchema={formSchema}
                 // onSubmit={(values)=> console.log(values)}
                 onSubmit={storeData}
                 // onSubmit={(values)=> AsyncStorage.setItem("token", values)}

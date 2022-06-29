@@ -10,11 +10,16 @@ import DailyView2 from '../components/DailyView2';
 import { render } from 'react-dom';
 import Formiktest from './Formiktest';
 import AppButton from '../components/AppButton';
+import DropShadow from "react-native-drop-shadow";
+
 
 
 
 
 function Analytics(props) {
+
+
+
 
     
     const wait = (timeout) => {
@@ -87,6 +92,8 @@ function Analytics(props) {
                 Instant Emotions
             </Text>
             {/* <Button title='heek' onPress={getData}/> */}
+
+
             
             <View style={styles.whiteBackground}>
 
@@ -97,46 +104,34 @@ function Analytics(props) {
                 }
             >
                 
-            <View style={styles.container}>
+            <View style={styles.container2}>
                 <View>
                     {emotions.map(x => {
                         return <DailyView2 key={x.time} props={x}/>
                     })}
 
                 </View> 
+            
+
+            
+            <DropShadow style={styles.container}>
+                <View style={styles.viewStyle}>
+                        <Image style={styles.emotions} source={getImage('happy')}/>
+
+                        <View style={styles.ViewReasons}>
+                            <Text style={styles.emotionText}>happy</Text>
+                            <Text style={styles.emotionSub}>Reason: my first entry</Text>
+                            <Text style={styles.emotionSub}>Mood: 5</Text>
+                            <Text style={styles.emotionSub}>{Moment(Date()).format('D MMM YYYY - h:mma ')}</Text>
+                        </View>
+                </View>
+            </DropShadow>
+
             </View>
             
             </ScrollView>
 
             </View>
-
-
-                {/* // <DailyView2 props={emotions[0]}/> */}
-            {/* <DailyView itemImage={undefined}  
-            itemEmotion={emotions[0]["feeling"]}
-            itemTime={global.item1Time}
-            itemMood={global.item1Mood}
-            itemReason={global.item1Reason}/> */}
-
-            {/* <DailyView itemImage={global.item1Image} 
-            itemEmotion={global.item1Emotion}
-            itemTime={global.item1Time}
-            itemMood={global.item1Mood}
-            itemReason={global.item1Reason}/> */}
-
-
-            {/* <DailyView itemImage={global.item3Image} 
-            itemEmotion={global.item3Emotion}
-            itemTime={global.item3Time}
-            itemMood={global.item3Mood}
-            itemReason={global.item3Reason}/> */}
-
-
-
-
-
-
-    {/* <AppButton type="submit" onPress={()=>setUpdate((prevState)=> !prevState)} title="tester"/> */}
 
         
 
@@ -203,15 +198,6 @@ const styles = StyleSheet.create({
         
     },
 
-    emotionText:{
-        fontFamily: 'Arial Rounded MT Bold',
-        fontSize: 20,
-        justifyContent: 'center',
-        fontWeight: 'bold',
-        textAlign: 'center',
-        textTransform: 'capitalize', 
-        width: '40%'
-    },
 
     ViewReasons:{
         paddingLeft: 40,
@@ -243,6 +229,10 @@ const styles = StyleSheet.create({
 
     },
 
+    container2:{
+        marginBottom: 30
+    },
+
     
 
     emotions:{
@@ -263,7 +253,75 @@ const styles = StyleSheet.create({
         paddingRight: 5,
         
         
+    },
+
+    emotionText:{
+        fontFamily: 'Arial Rounded MT Bold',
+        fontSize: 20,
+        justifyContent: 'center',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        textTransform: 'capitalize', 
+        
+    },
+
+    ViewReasons:{
+        paddingLeft: 40,
+        alignContent: 'center',
+        alignItems: 'center',
+        width: '60%',
+        marginBottom: 20,
+        
+        
+        
+        
+    },
+
+    emotionSub:{
+        fontFamily: 'Arial Rounded MT Bold',
+        fontSize: 13,
+        justifyContent: 'center',
+        flex: 1
+
+        
+    },
+
+    viewStyle:{
+        flexDirection: 'row',
+        height: 120,
+        justifyContent: 'center',
+        // paddingLeft: 40,
+        paddingTop: 10,
+        marginBottom: 10,
+        
+
+        borderColor: "#e6e6e6",
+        borderWidth: 1,
+        borderRadius: 10,
+        backgroundColor: colours.white,
+        
+
+        
+
+    },
+
+    
+
+    emotions:{
+        width: 80,
+        height: 80
+        
+    },
+
+    container:{
+        shadowColor: colours.black,
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+        elevation: 1,
     }
+
+
 })
 
 export default Analytics;
