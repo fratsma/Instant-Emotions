@@ -37,7 +37,9 @@
     "react-native-vector-icons": "^9.1.0",
     "react-native-web": "0.17.1",
     "victory-native": "^36.5.2",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "expo-store-review": "~5.1.0",
+    "expo-linking": "~3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

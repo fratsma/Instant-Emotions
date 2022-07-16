@@ -16,7 +16,7 @@ const AuthNavigator = () =>(
         <Stack.Screen name="Home" component={Formiktest}/>
         <Stack.Screen name="Daily View" component={Analytics}/>
         <Stack.Screen name="Analytics" component={AdvancedAnalytics}/>
-        <Stack.Screen name="Help" component={HelpMe}/>
+        {/* <Stack.Screen name="Help" component={HelpMe}/> */}
     </Stack.Navigator>
 )
 

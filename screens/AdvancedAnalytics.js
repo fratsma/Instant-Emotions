@@ -466,12 +466,12 @@ function AdvancedAnalytics(props) {
 
               <View style={styles.spacesBetween}>
                 <Text style={styles.subText2}>Entry Count</Text>
-                <Text style={styles.mainText4}>{numEntry}</Text>
+                <Text style={styles.mainText5}>{numEntry}</Text>
               </View>
 
               <View style={styles.spacesBetween}>
                 <Text style={styles.subText2}>Mood Difference</Text>
-                <Text style={styles.mainText4}>{moodData}%</Text>
+                <Text style={styles.mainText5}>{moodData}%</Text>
               </View>
 
               {/* <View style={styles.spacesBetween}>
@@ -606,7 +606,7 @@ const styles = StyleSheet.create({
 
 
   mainText4:{
-    fontSize: 35, 
+    fontSize: 40, 
     paddingTop: 5,
     paddingBottom: 10,
     fontWeight: 'bold', 
@@ -621,6 +621,21 @@ const styles = StyleSheet.create({
     
 },
 
+mainText5:{
+  fontSize: 35, 
+  paddingTop: 5,
+  paddingBottom: 10,
+  fontWeight: 'bold', 
+  textAlign: 'center',
+  color: colours.reallyGrey,
+  // fontFamily: 'Arial-BoldMT'
+  // fontFamily: 'Helvetica Neue'
+  fontFamily: 'Arial Rounded MT Bold',
+  color: colours.lightgrey,
+  
+
+  
+},
 
     graphWidth:{
       width: '80%',

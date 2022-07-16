@@ -11,7 +11,7 @@ import { render } from 'react-dom';
 import Formiktest from './Formiktest';
 import AppButton from '../components/AppButton';
 import DropShadow from "react-native-drop-shadow";
-
+import * as StoreReview from 'expo-store-review';
 
 
 
@@ -20,18 +20,65 @@ function HelpMe(props) {
 
   
       
-              
+    const itunesItemId = 982107779;
+
+    // Linking.openURL(
+    //     `itms-apps://itunes.apple.com/app/viewContentsUserReviews/id${itunesItemId}?action=write-review`
+    //   );
   
           
       return (
-         <Screen>
+         <Screen style={styles.background}>
+            <Text style={styles.mainText4}>
+                Instant Emotions
+            </Text>
 
+            <View style={styles.whiteBackground}>
+
+                <ScrollView style={styles.marginT}>
+
+            
+
+                                
+                    <DropShadow style={styles.container}>
+                        <View style={styles.viewStyle2}>
+                            <Text style={styles.subText3}>There is always hope, even when your brain tells you there isn't</Text>
+                        </View>
+                    </DropShadow>
+
+
+                    <DropShadow style={styles.container}>
+                        <View style={styles.viewStyle}>
+                            <Text style={styles.subText4}>If you have any comments or suggestions, please consider givings us a review!</Text>
+                            {/* <Text style={styles.subText4}>*****</Text> */}
+                        </View>
+                    </DropShadow>
+
+                    <DropShadow style={styles.container}>
+                        <View style={styles.viewStyle}>
+                            <Text style={styles.subText4}>A huge thanks to Colly for the artwork and Jake for helping with coding.</Text>
+                            {/* <Text style={styles.subText4}>*****</Text> */}
+                        </View>
+                    </DropShadow>
+
+
+                    
+
+      
+
+                </ScrollView>
+
+            </View>
          </Screen>
       );
   }
 
 
   const styles = StyleSheet.create({
+
+    appBut:{
+        
+    },
 
    background:{
        backgroundColor: colours.lightblue,
@@ -46,16 +93,7 @@ function HelpMe(props) {
 
        borderRadius: 15,
        paddingTop: 20,
-       
-
-       
-       
-
    },
-
-
-
-
    
    mainText:{
        fontSize: 40, 
@@ -108,13 +146,26 @@ function HelpMe(props) {
 
    viewStyle:{
        flexDirection: 'row',
-       height: 120,
+       height: 150,
        justifyContent: 'center',
        // paddingLeft: 40,
        paddingTop: 10,
+       paddingBottom: 20
        
 
    },
+
+   viewStyle2:{
+    flexDirection: 'row',
+    height: 120,
+    justifyContent: 'center',
+    // paddingLeft: 40,
+    paddingTop: 10,
+    backgroundColor: colours.lightblue,
+    borderRadius: 20
+    
+
+},
 
    container2:{
        marginBottom: 30
@@ -178,13 +229,13 @@ function HelpMe(props) {
        height: 120,
        justifyContent: 'center',
        // paddingLeft: 40,
-       paddingTop: 10,
+    //    paddingTop: 10,
        marginBottom: 10,
        
 
        borderColor: "#e6e6e6",
        borderWidth: 1,
-       borderRadius: 10,
+       borderRadius: 20,
        backgroundColor: colours.white,
        
 
@@ -206,7 +257,62 @@ function HelpMe(props) {
        shadowOpacity: 0.5,
        shadowRadius: 3,
        elevation: 1,
-   }
+       marginBottom: 20
+   },
+
+   shadow:{
+    alignItems: 'center',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    elevation: 1,
+    shadowColor: colours.black,
+    backgroundColor: colours.white,
+
+
+
+  
+  },
+
+  subText3:{
+    fontSize: 20, 
+    paddingTop: 0,
+    paddingBottom: 15,
+    fontWeight: 'bold', 
+    textAlign: 'center',
+    color: colours.white,
+    fontFamily: 'Arial Rounded MT Bold',
+    marginTop: 20,
+    marginBottom: 0,
+
+},
+
+subText4:{
+    fontSize: 20, 
+    paddingTop: 0,
+    paddingBottom: 15,
+    fontWeight: 'bold', 
+    textAlign: 'center',
+    color: colours.danger,
+    fontFamily: 'Arial Rounded MT Bold',
+    marginTop: 20,
+    marginBottom: 0,
+    
+
+},
+
+subText4:{
+    fontSize: 20, 
+    paddingTop: 0,
+    paddingBottom: 15,
+    fontWeight: 'bold', 
+    textAlign: 'center',
+    color: colours.danger,
+    fontFamily: 'Arial Rounded MT Bold',
+    marginTop: 20,
+    marginBottom: 0,
+
+},
 
 
 })
