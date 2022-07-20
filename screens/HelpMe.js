@@ -11,7 +11,7 @@ import { render } from 'react-dom';
 import Formiktest from './Formiktest';
 import AppButton from '../components/AppButton';
 import DropShadow from "react-native-drop-shadow";
-import * as StoreReview from 'expo-store-review';
+// import * as StoreReview from 'expo-store-review';
 
 
 
