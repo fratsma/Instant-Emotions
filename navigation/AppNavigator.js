@@ -49,6 +49,12 @@ const AppNavigator = () => (
             
         }}/>
 
+        {/* <Tab.Screen name="More" component={HelpMe} 
+        options={{
+            tabBarIcon: () => <Ionicons name="help" size={24} color="#3f3f3f" />
+            
+        }}/> */}
+
 
 
             

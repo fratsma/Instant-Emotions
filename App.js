@@ -36,6 +36,7 @@ const auth = getAuth();
 signInAnonymously(auth)
   .then(() => {
     console.log("SIGNED IN")
+    
   })
   .catch((error) => {
     const errorCode = error.code;
