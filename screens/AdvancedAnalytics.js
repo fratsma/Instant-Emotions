@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, Dimensions, RefreshControl } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, Dimensions, RefreshControl, Modal, Pressable } from 'react-native';
 import colours from '../config/colours';
 // import { Text } from 'react-native';
 import Screen from '../components/Screen';
@@ -232,7 +232,7 @@ function AdvancedAnalytics(props) {
           ]
         })
 
-
+    const [modalVisibile, setModalVisible] = React.useState(false)
     const [lineData, setLineData] = React.useState([])
     
     const [pieData, setPieData] = React.useState([])
@@ -409,6 +409,7 @@ function AdvancedAnalytics(props) {
         // console.log(Object.values(data)[0]["entry"]["reason"])
 
         setDictLength( Object.keys(graphData).length -1)
+        // const [modalVisibile, setModalVisible] = React.useState(false)
 
 
         setNumEntry(numEntries)
@@ -457,9 +458,32 @@ function AdvancedAnalytics(props) {
             <View style={styles.whiteBackground}>
 
 
-            <ScrollView style={styles.whiteBackground} refreshControl={
+            <ScrollView refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }>
+
+            <Modal visible={modalVisibile} animationType="slide" transparent={true}>
+                    <View style={styles.center}>
+                    <View style={styles.modalView}>
+                        <Pressable onPress={() => setModalVisible(false)}>
+                            <Text style={styles.emotionText4}>x</Text>
+                        </Pressable>
+                        <Text style={styles.emotionText}>Here you can see more in depth information about your entries</Text>
+                        <Text style={styles.emotionText}>The more entries, the more accurate the information will be</Text>
+                        <Text style={styles.emotionText3}>Can't see any data?</Text>
+                        <Text style={styles.emotionText}>This means that either, your data is loading and should be displayed soon</Text>
+                        <Text style={styles.emotionText}>Or, you have not entered any data yet</Text>
+                        <Text style={styles.emotionText3}>Missing recent entries?</Text>
+                        <Text style={styles.emotionText}>Refresh the page by pulling down</Text>
+
+                    </View>
+                    </View>
+
+                </Modal>
+                    <Pressable style={styles.pressableStyle} onPress={() => setModalVisible(true)}>
+                        <Text style={styles.emotionText2}>?</Text>
+                    </Pressable>
+
 
             <View style={styles.viewStyle}>
               
@@ -695,7 +719,7 @@ mainText5:{
     flexDirection: "row",
     height: 100,
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 35,
     },
 
 spacesBetween:{
@@ -736,7 +760,103 @@ shadow2:{
   marginTop: 10,
 
   
-}
+}, 
+
+pressableStyle:{
+  backgroundColor: colours.lightblue,
+  borderRadius: 25,
+  padding: 5,
+  width: "7%",
+  position: 'absolute',
+  right: 27,
+  // marginRight: "5%",
+
+},
+
+center:{
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+
+modalView: {
+
+  marginTop: 160,
+  backgroundColor: colours.lightblue,
+  width: "80%",
+  borderRadius: 20,
+  padding: 15,
+
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 2
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 4,
+  elevation: 5
+},
+
+whiteBackground:{
+  backgroundColor: colours.white,
+
+  borderRadius: 15,
+  paddingTop: 20,
+  
+
+  
+  
+
+},
+
+emotionText:{
+  fontFamily: 'Arial Rounded MT Bold',
+  paddingBottom: 10,
+  fontSize: 17,
+  justifyContent: 'center',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  color: colours.white,
+  
+},
+
+emotionText2:{
+
+  fontFamily: 'Arial Rounded MT Bold',
+  fontSize: 15,
+  justifyContent: 'center',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  color: colours.white,
+  
+},
+
+emotionText3:{
+  fontFamily: 'Arial Rounded MT Bold',
+  paddingTop: 20,
+
+  paddingBottom: 10,
+  fontSize: 20,
+  justifyContent: 'center',
+  fontWeight: 'bold',
+  textAlign: 'center',
+  color: colours.white,
+  
+},
+
+emotionText4:{
+  fontFamily: 'Arial Rounded MT Bold',
+  // paddingTop: 20,
+
+  paddingBottom: 10,
+  fontSize: 20,
+  // justifyContent: 'center',
+  fontWeight: 'bold',
+  textAlign: 'right',
+  color: colours.white,
+  
+},
+
+
 
 
 

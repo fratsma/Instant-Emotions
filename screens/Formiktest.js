@@ -370,10 +370,10 @@ function Formiktest(props) {
 
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "overwhelmed")}>
+                            onPress={() => setFieldValue("feeling", "stunned")}>
                                 <Image style={styles.emotions} source={require('../assets/overwhelmed.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.sad}>Overwhelmed</Text>
+                            <Text style={styles.sad}>Stunned</Text>
     
                         </View>
     
@@ -633,8 +633,8 @@ const styles = StyleSheet.create({
     },
 
     emotions:{
-        width: 70,
-        height: 70,
+        width: 65,
+        height: 65,
         
     },
 
@@ -791,7 +791,7 @@ const styles = StyleSheet.create({
     },
 
     input:{
-        height: 50,
+        height: 55,
         margin: 12,
         borderWidth: 1,
         padding: 10,

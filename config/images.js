@@ -22,7 +22,7 @@ export function getImage(input){
         case "love": return require('../assets/love.jpeg');
         case "meh": return require('../assets/meh.jpeg');
         case "nostalgic": return require('../assets/nostalgic.jpeg');
-        case "overwhelmed": return require('../assets/overwhelmed.jpeg');
+        case "stunned": return require('../assets/overwhelmed.jpeg');
         case "passionate": return require('../assets/passionate.jpeg');
         case "proud": return require('../assets/proud.jpeg');
         case "relieved": return require('../assets/relieved.jpeg');
