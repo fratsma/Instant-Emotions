@@ -10,7 +10,7 @@ export function getImage(input){
         case "confused": return require('../assets/confused.jpeg');
         case "content": return require('../assets/content.jpeg');
         case "dependable": return require('../assets/dependable.jpeg');
-        case "disappointed": return require('../assets/disappointed.jpeg');
+        case "down": return require('../assets/disappointed.jpeg');
         case "emotional": return require('../assets/emotional.jpeg');
         case "excited": return require('../assets/excited.jpeg');
         case "frustrated": return require('../assets/frustrated.jpeg');

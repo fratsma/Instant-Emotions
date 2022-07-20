@@ -50,6 +50,7 @@ function AdvancedAnalytics(props) {
       var averageRecent = 0
       var recentMood = 0
       var percentageChange = 0
+      var overallAverage = 0
   
       var green = 0
       var grey = 0
@@ -131,8 +132,8 @@ function AdvancedAnalytics(props) {
             }
             else if (value["entry"]["feeling"] == "sad" || value["entry"]["feeling"] == "upset" || value["entry"]["feeling"] == "scared"
                 || value["entry"]["feeling"] == "stressed" || value["entry"]["feeling"] == "anxious" || value["entry"]["feeling"] == "unwell"
-                || value["entry"]["feeling"] == "annoyed" || value["entry"]["feeling"] == "frustrated" || value["entry"]["feeling"] == "disappointed"
-                || value["entry"]["feeling"] == "overwhelmed" || value["entry"]["feeling"] == "jealous" || value["entry"]["feeling"] == "humiliated"){
+                || value["entry"]["feeling"] == "annoyed" || value["entry"]["feeling"] == "frustrated" || value["entry"]["feeling"] == "down"
+                || value["entry"]["feeling"] == "stunned" || value["entry"]["feeling"] == "jealous" || value["entry"]["feeling"] == "humiliated"){
                 red += 1
             }
 
@@ -177,17 +178,15 @@ function AdvancedAnalytics(props) {
           setNumEntry(numEntries)
           averageRecent = recent / numEntries
 
-          // console.log("FINAL")
-          // console.log(averageRecent)
-          // console.log(recentMood)
-
-          // percentageChange = (averageRecent - recentMood)/averageRecent
           percentageChange = (recentMood - averageRecent) / recentMood
           percentageChange = percentageChange * 100
           percentageChange = percentageChange.toFixed(2)
           // console.log(percentageChange)
 
-          setMoodData(percentageChange)
+          overallAverage = recent / numEntries
+          overallAverage = overallAverage.toFixed(2)
+          console.log(overallAverage)
+          setMoodData(overallAverage)
 
 
           setBarData({
@@ -265,6 +264,7 @@ function AdvancedAnalytics(props) {
     var today = 0
     var recentMood = 0
     var percentageChange = 0
+    var overallAverage = 0
 
     var green = 0
     var grey = 0
@@ -350,8 +350,8 @@ function AdvancedAnalytics(props) {
             }
             else if (value["entry"]["feeling"] == "sad" || value["entry"]["feeling"] == "upset" || value["entry"]["feeling"] == "scared"
                 || value["entry"]["feeling"] == "stressed" || value["entry"]["feeling"] == "anxious" || value["entry"]["feeling"] == "unwell"
-                || value["entry"]["feeling"] == "annoyed" || value["entry"]["feeling"] == "frustrated" || value["entry"]["feeling"] == "disappointed"
-                || value["entry"]["feeling"] == "overwhelmed" || value["entry"]["feeling"] == "jealous" || value["entry"]["feeling"] == "humiliated"){
+                || value["entry"]["feeling"] == "annoyed" || value["entry"]["feeling"] == "frustrated" || value["entry"]["feeling"] == "down"
+                || value["entry"]["feeling"] == "stunned" || value["entry"]["feeling"] == "jealous" || value["entry"]["feeling"] == "humiliated"){
                 red += 1
             }
 
@@ -392,6 +392,8 @@ function AdvancedAnalytics(props) {
 
         averageRecent = recent / numEntries
 
+        
+
           // console.log("FINAL")
           // console.log(averageRecent)
           // console.log(recentMood)
@@ -401,7 +403,10 @@ function AdvancedAnalytics(props) {
           percentageChange = percentageChange.toFixed(2)
           // console.log(percentageChange)
 
-          setMoodData(percentageChange)
+          overallAverage = recent / numEntries
+          overallAverage = overallAverage.toFixed(2)
+          console.log(overallAverage)
+          setMoodData(overallAverage)
 
         // console.log("count")
         // console.log(count)
@@ -494,8 +499,8 @@ function AdvancedAnalytics(props) {
               </View>
 
               <View style={styles.spacesBetween}>
-                <Text style={styles.subText2}>Mood Difference</Text>
-                <Text style={styles.mainText5}>{moodData}%</Text>
+                <Text style={styles.subText2}>Mood Average</Text>
+                <Text style={styles.mainText5}>{moodData}</Text>
               </View>
 
               {/* <View style={styles.spacesBetween}>

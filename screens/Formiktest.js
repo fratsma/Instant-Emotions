@@ -426,10 +426,10 @@ function Formiktest(props) {
 
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "disappointed")}>
+                            onPress={() => setFieldValue("feeling", "down")}>
                                 <Image style={styles.emotions} source={require('../assets/disappointed.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.sad}>Disappointed</Text>
+                            <Text style={styles.sad}>Down</Text>
     
                         </View>
     
