@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component, Suspense } from 'react';
 import Screen from '../components/Screen';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, RefreshControl } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, RefreshControl, Modal, Pressable } from 'react-native';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
 import colours from '../config/colours';
 import App from '../App';
@@ -11,6 +11,9 @@ import { render } from 'react-dom';
 import Formiktest from './Formiktest';
 import AppButton from '../components/AppButton';
 import DropShadow from "react-native-drop-shadow";
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 
 
@@ -58,7 +61,8 @@ function Analytics(props) {
     }, []);
 
 
-    const [emotions, setEmotions] = useState([])
+    const [emotions, setEmotions] = useState([]);
+    const [modalVisibile, setModalVisible] = useState(false)
     
 
     React.useEffect(() => {
@@ -103,6 +107,28 @@ function Analytics(props) {
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
                 }
             >
+                <Modal visible={modalVisibile} animationType="slide" transparent={true}>
+                    <View style={styles.center}>
+                    <View style={styles.modalView}>
+                        <Pressable onPress={() => setModalVisible(false)}>
+                            <Text style={styles.emotionText4}>x</Text>
+                        </Pressable>
+                        <Text style={styles.emotionText}>Here is where you can view all of your previous entries!</Text>
+                        <Text style={styles.emotionText3}>Can't see anything?</Text>
+                        <Text style={styles.emotionText}>This means that either, your data is loading and should be displayed soon</Text>
+                        <Text style={styles.emotionText}>Or, you have not entered any data yet</Text>
+                        <Text style={styles.emotionText3}>Missing recent entries?</Text>
+                        <Text style={styles.emotionText}>Refresh the page by pulling down</Text>
+
+                    </View>
+                    </View>
+
+                </Modal>
+                <View style={styles.modalStyle}>
+                    <Pressable style={styles.pressableStyle} onPress={() => setModalVisible(true)}>
+                        <Text style={styles.emotionText2}>?</Text>
+                    </Pressable>
+                </View>
                 
             <View style={styles.container2}>
                 <View>
@@ -114,18 +140,7 @@ function Analytics(props) {
             
 
             
-            <DropShadow style={styles.container}>
-                <View style={styles.viewStyle}>
-                        <Image style={styles.emotions} source={getImage('happy')}/>
 
-                        <View style={styles.ViewReasons}>
-                            <Text style={styles.emotionText}>happy</Text>
-                            <Text style={styles.emotionSub}>Reason: my first entry</Text>
-                            <Text style={styles.emotionSub}>Mood: 5</Text>
-                            <Text style={styles.emotionSub}>{Moment(Date()).format('D MMM YYYY - h:mma ')}</Text>
-                        </View>
-                </View>
-            </DropShadow>
 
             </View>
             
@@ -154,6 +169,40 @@ const styles = StyleSheet.create({
         
     },
 
+    pressableStyle:{
+        backgroundColor: colours.lightblue,
+        borderRadius: 25,
+        padding: 5,
+        width: "8%",
+        position: 'absolute',
+        right: 3,
+        // marginRight: "5%",
+
+    },
+
+    center:{
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    modalView: {
+
+        marginTop: 220,
+        backgroundColor: colours.lightblue,
+        width: "80%",
+        borderRadius: 20,
+        padding: 15,
+
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+
     whiteBackground:{
         backgroundColor: colours.white,
 
@@ -167,7 +216,11 @@ const styles = StyleSheet.create({
     },
 
 
-
+    modalStyle:{
+        // position: 'absolute',
+        // top: 0,
+        // right: 10,
+    },
 
     
     mainText:{
@@ -230,6 +283,7 @@ const styles = StyleSheet.create({
     },
 
     container2:{
+        marginTop: 40,
         marginBottom: 30
     },
 
@@ -257,11 +311,48 @@ const styles = StyleSheet.create({
 
     emotionText:{
         fontFamily: 'Arial Rounded MT Bold',
+        paddingBottom: 10,
+        fontSize: 17,
+        justifyContent: 'center',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: colours.white,
+        
+    },
+
+    emotionText2:{
+        fontFamily: 'Arial Rounded MT Bold',
+        fontSize: 15,
+        justifyContent: 'center',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: colours.white,
+        
+    },
+
+    emotionText3:{
+        fontFamily: 'Arial Rounded MT Bold',
+        paddingTop: 20,
+
+        paddingBottom: 10,
         fontSize: 20,
         justifyContent: 'center',
         fontWeight: 'bold',
         textAlign: 'center',
-        textTransform: 'capitalize', 
+        color: colours.white,
+        
+    },
+
+    emotionText4:{
+        fontFamily: 'Arial Rounded MT Bold',
+        // paddingTop: 20,
+
+        paddingBottom: 10,
+        fontSize: 20,
+        // justifyContent: 'center',
+        fontWeight: 'bold',
+        textAlign: 'right',
+        color: colours.white,
         
     },
 
