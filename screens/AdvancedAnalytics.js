@@ -23,6 +23,8 @@ import { LogBox } from 'react-native';
 import PureChart from 'react-native-pure-chart';
 
 
+
+
 Moment.suppressDeprecationWarnings = true;
 
 
