@@ -16,6 +16,7 @@ import AppNavigator from "./navigation/AppNavigator";
 
 
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyDWMBAt8RLazzPnBxeWbg6ACFtDeZxGqL4",
   authDomain: "instant-emotions-947f1.firebaseapp.com",

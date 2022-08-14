@@ -25,6 +25,7 @@ import PureChart from 'react-native-pure-chart';
 
 
 
+
 Moment.suppressDeprecationWarnings = true;
 
 
@@ -587,6 +588,7 @@ function AdvancedAnalytics(props) {
                 <PureChart data={lineData} type='line' />
 
               </View>
+
  
 
             </ScrollView>
