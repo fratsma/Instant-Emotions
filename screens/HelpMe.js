@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component, Suspense } from 'react';
 import Screen from '../components/Screen';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, RefreshControl } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, RefreshControl, TouchableOpacity } from 'react-native';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
 import colours from '../config/colours';
 import App from '../App';
@@ -38,31 +38,117 @@ function HelpMe(props) {
                 <ScrollView style={styles.marginT}>
 
             
+                <Text style={styles.subText}>Hours of Sleep: </Text>
+    
+                <View style={styles.viewScore}>
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>1</Text>
+                        </TouchableOpacity>
+                    </View>   
 
-                                
-                    <DropShadow style={styles.container}>
-                        <View style={styles.viewStyle2}>
-                            <Text style={styles.subText3}>There is always hope, even when your brain tells you there isn't</Text>
-                        </View>
-                    </DropShadow>
-
-
-                    <DropShadow style={styles.container}>
-                        <View style={styles.viewStyle}>
-                            <Text style={styles.subText4}>If you have any comments or suggestions, please consider givings us a review!</Text>
-                            {/* <Text style={styles.subText4}>*****</Text> */}
-                        </View>
-                    </DropShadow>
-
-                    <DropShadow style={styles.container}>
-                        <View style={styles.viewStyle}>
-                            <Text style={styles.subText4}>A huge thanks to Colly for the artwork and Jake for helping with coding.</Text>
-                            {/* <Text style={styles.subText4}>*****</Text> */}
-                        </View>
-                    </DropShadow>
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity  >
+                            <Text style={styles.mainText}>2</Text>
+                        </TouchableOpacity>
+                    </View> 
 
 
-                    
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>3</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>4</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>5</Text>
+                        </TouchableOpacity>
+                    </View> 
+                </View>                
+
+                <View style={styles.gap}/>
+
+                <View style={styles.viewScore}>
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>6</Text>
+                        </TouchableOpacity>
+                    </View>   
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity  >
+                            <Text style={styles.mainText}>7</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>8</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>9</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>+</Text>
+                        </TouchableOpacity>
+                    </View> 
+                </View>     
+
+
+                <Text style={styles.subText}>How Rested Do You Feel? </Text>
+    
+                <View style={styles.viewScore}>
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>1</Text>
+                        </TouchableOpacity>
+                    </View>   
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity  >
+                            <Text style={styles.mainText}>2</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>3</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>4</Text>
+                        </TouchableOpacity>
+                    </View> 
+
+
+                    <View style={styles.spacesBetween2}>
+                        <TouchableOpacity >
+                            <Text style={styles.mainText}>5</Text>
+                        </TouchableOpacity>
+                    </View> 
+                </View>      
 
       
 
@@ -76,243 +162,237 @@ function HelpMe(props) {
 
   const styles = StyleSheet.create({
 
-    appBut:{
+    background:{
+        backgroundColor: colours.lightblue,
+        flex: 1,
+        paddingBottom: 20,
+        
+        
+
+
         
     },
 
-   background:{
-       backgroundColor: colours.lightblue,
-       flex: 1,
-       paddingBottom: 90,
-       // borderRadius: 15,
-       
-   },
-
-   whiteBackground:{
-       backgroundColor: colours.white,
-
-       borderRadius: 15,
-       paddingTop: 20,
-   },
-   
-   mainText:{
-       fontSize: 40, 
-       paddingTop: 5,
-       paddingBottom: 10,
-       fontWeight: 'bold', 
-       textAlign: 'center',
-       color: colours.danger,
-       // fontFamily: 'Arial-BoldMT'
-       // fontFamily: 'Helvetica Neue'
-       fontFamily: 'Arial Rounded MT Bold'
-       
-   },
-
-   mainText4:{
-       fontSize: 40, 
-       paddingTop: 5,
-       paddingBottom: 10,
-       fontWeight: 'bold', 
-       textAlign: 'center',
-       color: colours.reallyGrey,
-       // fontFamily: 'Arial-BoldMT'
-       // fontFamily: 'Helvetica Neue'
-       fontFamily: 'Arial Rounded MT Bold',
-       
-
-       
-   },
+    whiteBackground:{
+        backgroundColor: colours.background,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        elevation: 1,
+        shadowColor: colours.black,
+        borderRadius: 10
 
 
-   ViewReasons:{
-       paddingLeft: 40,
-       alignContent: 'center',
-       alignItems: 'center',
-       width: '60%',
-       
-       
-       
-   },
+    },
 
-   emotionSub:{
-       fontFamily: 'Arial Rounded MT Bold',
-       fontSize: 15,
-       justifyContent: 'center',
-       flex: 1,
-       
+    buttonContainer:{
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        elevation: 1,
+        shadowColor: colours.black,
+    },
 
-       
-   },
+    emotions:{
+        width: 65,
+        height: 65,
+        
+    },
 
-   viewStyle:{
-       flexDirection: 'row',
-       height: 150,
-       justifyContent: 'center',
-       // paddingLeft: 40,
-       paddingTop: 10,
-       paddingBottom: 20
-       
+    happy:{
+        fontSize: 12,
+        color: colours.green,
+        textAlign: 'center',
+        fontFamily: 'KohinoorBangla-Semibold',
+        paddingTop: 3
+    },
 
-   },
+    straight:{
+        fontSize: 12,
+        color: colours.grey,
+        textAlign: 'center',
+        fontFamily: 'KohinoorBangla-Semibold',
+        paddingTop: 3
+    },
 
-   viewStyle2:{
-    flexDirection: 'row',
-    height: 120,
-    justifyContent: 'center',
-    // paddingLeft: 40,
-    paddingTop: 10,
-    backgroundColor: colours.lightblue,
-    borderRadius: 20
-    
+    sad:{
+        fontSize: 12,
+        color: colours.red,
+        textAlign: 'center',
+        fontFamily: 'KohinoorBangla-Semibold',
+        paddingTop: 3
+    },
 
-},
-
-   container2:{
-       marginBottom: 30
-   },
-
-   
-
-   emotions:{
-       width: 80,
-       height: 80,
-       
-   },
-
-   marginT:{
-       marginBottom: 90, 
-       width: '90%',
-       alignSelf: 'center',
-       borderTopStartRadius: 10,
-       borderTopEndRadius: 10,
-       backgroundColor: colours.background, 
-       height: '100%',
-       paddingLeft: 5,
-       paddingRight: 5,
-       
-       
-   },
-
-   emotionText:{
-       fontFamily: 'Arial Rounded MT Bold',
-       fontSize: 20,
-       justifyContent: 'center',
-       fontWeight: 'bold',
-       textAlign: 'center',
-       textTransform: 'capitalize', 
-       
-   },
-
-   ViewReasons:{
-       paddingLeft: 40,
-       alignContent: 'center',
-       alignItems: 'center',
-       width: '60%',
-       marginBottom: 20,
-       
-       
-       
-       
-   },
-
-   emotionSub:{
-       fontFamily: 'Arial Rounded MT Bold',
-       fontSize: 13,
-       justifyContent: 'center',
-       flex: 1
-
-       
-   },
-
-   viewStyle:{
-       flexDirection: 'row',
-       height: 120,
-       justifyContent: 'center',
-       // paddingLeft: 40,
-    //    paddingTop: 10,
-       marginBottom: 10,
-       
-
-       borderColor: "#e6e6e6",
-       borderWidth: 1,
-       borderRadius: 20,
-       backgroundColor: colours.white,
-       
-
-       
-
-   },
-
-   
-
-   emotions:{
-       width: 80,
-       height: 80
-       
-   },
-
-   container:{
-       shadowColor: colours.black,
-       shadowOffset: {width: 0, height: 2},
-       shadowOpacity: 0.5,
-       shadowRadius: 3,
-       elevation: 1,
-       marginBottom: 20
-   },
-
-   shadow:{
-    alignItems: 'center',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    elevation: 1,
-    shadowColor: colours.black,
-    backgroundColor: colours.white,
+    mainText:{
+        fontSize: 40, 
+        paddingTop: 5,
+        paddingBottom: 10,
+        fontWeight: 'bold', 
+        textAlign: 'center',
+        color: colours.danger,
+        // fontFamily: 'Arial-BoldMT'
+        // fontFamily: 'Helvetica Neue'
+        fontFamily: 'Arial Rounded MT Bold'
+        
+    },
 
 
+    mainText4:{
+        fontSize: 40, 
+        paddingTop: 5,
+        paddingBottom: 10,
+        fontWeight: 'bold', 
+        textAlign: 'center',
+        color: colours.reallyGrey,
+        // fontFamily: 'Arial-BoldMT'
+        // fontFamily: 'Helvetica Neue'
+        fontFamily: 'Arial Rounded MT Bold',
 
-  
-  },
+        
+    },
 
-  subText3:{
-    fontSize: 20, 
-    paddingTop: 0,
-    paddingBottom: 15,
-    fontWeight: 'bold', 
-    textAlign: 'center',
-    color: colours.white,
-    fontFamily: 'Arial Rounded MT Bold',
-    marginTop: 20,
-    marginBottom: 0,
 
-},
+    mainText2:{
+        fontSize: 40, 
+        paddingTop: 10,
+        fontWeight: 'bold', 
+        textAlign: 'center',
+        color: colours.danger,
+        fontFamily: 'Arial Rounded MT Bold',
+        paddingHorizontal: 20,
+        
+    },
 
-subText4:{
-    fontSize: 20, 
-    paddingTop: 0,
-    paddingBottom: 15,
-    fontWeight: 'bold', 
-    textAlign: 'center',
-    color: colours.danger,
-    fontFamily: 'Arial Rounded MT Bold',
-    marginTop: 20,
-    marginBottom: 0,
-    
+    gap:{
+        alignItems: 'center',
+        paddingBottom: 15,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 5,
+        elevation: 1,
+        shadowColor: colours.black,
+    },
 
-},
+    scroller:{
+        paddingTop: 20,
+        backgroundColor: colours.white,
+        width: '93%',
+        alignSelf: 'center',
+        borderTopStartRadius: 10,
+        borderTopEndRadius: 10,
+        borderBottomStartRadius: 2,
+        borderBottomEndRadius: 2,
 
-subText4:{
-    fontSize: 20, 
-    paddingTop: 0,
-    paddingBottom: 15,
-    fontWeight: 'bold', 
-    textAlign: 'center',
-    color: colours.danger,
-    fontFamily: 'Arial Rounded MT Bold',
-    marginTop: 20,
-    marginBottom: 0,
+        
 
-},
+        
+        
+    },
+
+    spacesBetween:{
+        paddingLeft: 11,
+        paddingRight: 11,
+
+        
+    },
+
+    spacesBetween2:{
+        width: "15%",
+        // borderColor: colours.grey,
+        borderColor: colours.lightblue,
+        
+        borderWidth: 1.5,
+        alignItems: 'center',
+        borderRadius: 50, 
+        margin: 3,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius:4,
+        elevation: 1,
+        shadowColor: colours.black,
+        backgroundColor: colours.white,
+    },
+
+    viewStyle:{
+        flexDirection: "row",
+        height: 100,
+        justifyContent: "center",
+        
+
+        
+      
+        
+    },
+
+
+    viewStyleBottom:{
+        flexDirection: "row",
+        height: 100,
+        justifyContent: "center",
+        marginBottom: 30,
+    },
+
+    viewScore:{
+        flexDirection: "row",
+        height: 70,
+        justifyContent: "center",
+
+    },
+
+    subText:{
+        fontSize: 20, 
+        paddingTop: 0,
+        paddingBottom: 5,
+        fontWeight: 'bold', 
+        textAlign: 'center',
+        color: colours.danger,
+        fontFamily: 'Arial Rounded MT Bold',
+        marginTop: 20,
+        marginBottom: 0,
+    },
+
+    input:{
+        height: 55,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        width: 300,
+        textAlign: 'center',
+        color: colours.danger,
+        borderColor: colours.lightblue,
+        fontFamily: 'Arial Rounded MT Bold',
+        fontSize: 25,
+        borderRadius: 15,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 1,
+        elevation: 1,
+        shadowColor: colours.black,
+        backgroundColor: colours.white,
+
+
+    },
+
+    viewInput:{
+        alignItems: 'center',
+
+        
+        
+    },
+
+    marginT:{
+        marginBottom: 90, 
+        width: '90%',
+        alignSelf: 'center',
+        borderTopStartRadius: 10,
+        borderTopEndRadius: 10,
+        backgroundColor: colours.background, 
+        height: '100%',
+        paddingLeft: 5,
+        paddingRight: 5,
+        
+        
+    },
 
 
 })

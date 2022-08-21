@@ -2,7 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AdvancedAnalytics from "../screens/AdvancedAnalytics";
 import Analytics from "../screens/Analytics";
 import Formiktest from "../screens/Formiktest";
-import HelpMe from "../screens/HelpMe"
 import React, { useState } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -49,11 +48,6 @@ const AppNavigator = () => (
             
         }}/>
 
-        {/* <Tab.Screen name="More" component={HelpMe} 
-        options={{
-            tabBarIcon: () => <Ionicons name="help" size={24} color="#3f3f3f" />
-            
-        }}/> */}
 
 
 

@@ -12,6 +12,7 @@ import Analytics from "./screens/Analytics";
 import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigator from "./navigation/AuthNavigator";
 import AppNavigator from "./navigation/AppNavigator";
+import HelpMe from "./screens/HelpMe";
 
 
 
@@ -76,6 +77,7 @@ export default function App() {
     <NavigationContainer>
       <AppNavigator/>
     </NavigationContainer>
+    // <HelpMe/>
 
     
 
