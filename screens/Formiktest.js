@@ -137,14 +137,7 @@ function Formiktest(props) {
                     <View style={styles.viewStyle}>
     
                         
-                        <View style={styles.spacesBetween}>
-                            <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "amused")}>
-                                <Image style={styles.emotions} source={require('../assets/amused.jpeg')}/>
-                            </TouchableHighlight>
-                            <Text style={styles.happy}>Amused</Text>
-                    
-                        </View>
+
     
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
@@ -161,6 +154,15 @@ function Formiktest(props) {
                                 <Image style={styles.emotions} source={require('../assets/nostalgic.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.happy}>Nostalgic</Text>
+                    
+                        </View>
+
+                        <View style={styles.spacesBetween}>
+                            <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
+                            onPress={() => setFieldValue("feeling", "amused")}>
+                                <Image style={styles.emotions} source={require('../assets/amused.jpeg')}/>
+                            </TouchableHighlight>
+                            <Text style={styles.happy}>Amused</Text>
                     
                         </View>
     
@@ -452,14 +454,7 @@ function Formiktest(props) {
                         
 
 
-                        <View style={styles.spacesBetween}>
-                            <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "sad")}>
-                                <Image style={styles.emotions} source={require('../assets/sad.jpeg')}/>
-                            </TouchableHighlight>
-                            <Text style={styles.sad}>Sad</Text>
-    
-                        </View>
+
 
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
@@ -487,6 +482,15 @@ function Formiktest(props) {
                                 <Image style={styles.emotions} source={require('../assets/humiliated.jpeg')}/>
                             </TouchableHighlight>
                             <Text style={styles.sad}>Humiliated</Text>
+    
+                        </View>
+
+                        <View style={styles.spacesBetween}>
+                            <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
+                            onPress={() => setFieldValue("feeling", "sad")}>
+                                <Image style={styles.emotions} source={require('../assets/sad.jpeg')}/>
+                            </TouchableHighlight>
+                            <Text style={styles.sad}>Sad</Text>
     
                         </View>
     

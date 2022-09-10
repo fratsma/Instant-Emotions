@@ -1,6 +1,6 @@
 import React,  { Suspense, useState} from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList } from 'react-native';
-import { getDatabase, ref, onValue, set} from "firebase/database";
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, Alert } from 'react-native';
+import { getDatabase, ref, onValue, set, get, remove, removeData, update, child}  from "firebase/database";
 import Moment from 'moment';
 import {getImage} from '../config/images';
 import colours from '../config/colours';
@@ -11,10 +11,57 @@ import DropShadow from "react-native-drop-shadow";
 Moment.suppressDeprecationWarnings = true;
 
 
+
 function DailyView(props) {
     // console.log("View:")
-    let data = props.props
+    const data = props.props
     // console.log(data)
+
+    const createTwoButtonAlert = () =>
+    Alert.alert('Delete Entry', 'Are you sure you want to delete this input', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      { text: 'Delete', onPress: () => deleteData(), style: 'destructive', },
+    ]);
+
+    function deleteData(props){
+        console.log(data)
+        const db = getDatabase();
+        const emotionsRef = ref(db, 'users/' + global.uid);
+        get(emotionsRef).then((snapshot)=>{
+            if(snapshot.exists()){
+                var dataValues = snapshot.val();
+                console.log(dataValues)
+                console.log(data['time'])
+                let x = 0
+
+                // console.log(Object.dataValues(data))
+                for (const value of Object.values(dataValues)){
+                    if (value['entry']['time'] == data['time']){
+                        console.log("FCK YES")
+                        // console.log(value)
+                        // console.log(dataValues)
+                        let deletable = (Object.keys(dataValues)[x])
+                        console.log(deletable)
+                        console.log('users/' +global.uid + '/' + deletable)
+                        remove((ref(db, 'users/' + global.uid + '/' + deletable)))
+
+                        
+                        
+                    }
+                    x = x+1
+                }
+            }
+
+        })
+
+        
+    }
+
+
 
 
 
@@ -25,10 +72,14 @@ function DailyView(props) {
                     <Image style={styles.emotions} source={getImage(data.feeling)}/>
 
                     <View style={styles.ViewReasons}>
+                        <View style={styles.delete}>
+                            <Button style={styles.cross} title={'x'} onPress={createTwoButtonAlert}/>
+                        </View>
                         <Text style={styles.emotionText}>{data.feeling}</Text>
                         <Text style={styles.emotionSub}>Reason: {data.reason}</Text>
                         <Text style={styles.emotionSub}>Mood: {data.mood}</Text>
                         <Text style={styles.emotionSub}>{Moment(data.time).format('D MMM YYYY - h:mma ')}</Text>
+                        
                     </View>
             </View>
         </DropShadow>
@@ -106,7 +157,20 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.5,
         shadowRadius: 3,
         elevation: 1,
-    }
+    },
+
+    delete:{
+        position: 'absolute',
+        width: '100%', 
+        // alignItems: 'center',
+        // paddingLeft: 150,
+        left: '80%',
+        // backgroundColor: colours.blue,
+        marginVertical: -10
+
+
+        
+    },
 
 
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component, Suspense } from 'react';
 import Screen from '../components/Screen';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, RefreshControl, Modal, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, RefreshControl, Modal, Pressable, Alert } from 'react-native';
 import { getDatabase, ref, onValue, update, get, child} from "firebase/database";
 import colours from '../config/colours';
 import App from '../App';
@@ -130,6 +130,7 @@ function Analytics(props) {
                     </Pressable>
                 </View>
                 
+
             <View style={styles.container2}>
                 <View>
                     {emotions.map(x => {
@@ -137,6 +138,7 @@ function Analytics(props) {
                     })}
 
                 </View> 
+            
             
 
             
