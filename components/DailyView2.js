@@ -1,5 +1,5 @@
 import React,  { Suspense, useState} from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, ActivityIndicator, FlatList, Alert, Pressable } from 'react-native';
 import { getDatabase, ref, onValue, set, get, remove, removeData, update, child}  from "firebase/database";
 import Moment from 'moment';
 import {getImage} from '../config/images';
@@ -34,19 +34,19 @@ function DailyView(props) {
         get(emotionsRef).then((snapshot)=>{
             if(snapshot.exists()){
                 var dataValues = snapshot.val();
-                console.log(dataValues)
-                console.log(data['time'])
+                // console.log(dataValues)
+                // console.log(data['time'])
                 let x = 0
 
                 // console.log(Object.dataValues(data))
                 for (const value of Object.values(dataValues)){
                     if (value['entry']['time'] == data['time']){
-                        console.log("FCK YES")
+                        // console.log("FCK YES")
                         // console.log(value)
                         // console.log(dataValues)
                         let deletable = (Object.keys(dataValues)[x])
-                        console.log(deletable)
-                        console.log('users/' +global.uid + '/' + deletable)
+                        // console.log(deletable)
+                        // console.log('users/' +global.uid + '/' + deletable)
                         remove((ref(db, 'users/' + global.uid + '/' + deletable)))
 
                         
@@ -72,9 +72,9 @@ function DailyView(props) {
                     <Image style={styles.emotions} source={getImage(data.feeling)}/>
 
                     <View style={styles.ViewReasons}>
-                        <View style={styles.delete}>
-                            <Button style={styles.cross} title={'x'} onPress={createTwoButtonAlert}/>
-                        </View>
+                            <Pressable style={styles.delete} onPress={createTwoButtonAlert}>
+                                <Text style={styles.emotionSub}>x</Text>
+                            </Pressable>
                         <Text style={styles.emotionText}>{data.feeling}</Text>
                         <Text style={styles.emotionSub}>Reason: {data.reason}</Text>
                         <Text style={styles.emotionSub}>Mood: {data.mood}</Text>
@@ -164,13 +164,17 @@ const styles = StyleSheet.create({
         width: '100%', 
         // alignItems: 'center',
         // paddingLeft: 150,
-        left: '80%',
+        left: '130%',
         // backgroundColor: colours.blue,
         marginVertical: -10
 
 
         
     },
+
+    cross:{
+        fontWeight: 'bold'
+    }
 
 
 

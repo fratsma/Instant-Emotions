@@ -52,6 +52,7 @@ function storeData(values, {resetForm}){
 function Formiktest(props) {
 
     let formSchema = yup.object().shape({
+        
         feeling: yup.string().required(),
         mood: yup.number().required()
     })
@@ -72,7 +73,7 @@ function Formiktest(props) {
 
             <Formik
                 initialValues={{
-                    feeling: '-',
+                    feeling: '',
                     reason: 'no input',
                     mood: '',
                     time: Date(),

@@ -17,7 +17,9 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fratsma.instantemotions",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
@@ -27,16 +29,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0b8256cf-027d-4d3e-93d5-428116449ac9"
+      }
     }
-
-
   },
   "react-native-google-mobile-ads": {
     "android_app_id": "ca-app-pub-2875047620727571~6200825462",
     "ios_app_id": "ca-app-pub-2875047620727571~6200825462"
   }
-  
 }
-
-
-
