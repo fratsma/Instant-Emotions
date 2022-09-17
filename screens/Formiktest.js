@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, Keyboard, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, Button, TouchableHighlight, Keyboard, KeyboardAvoidingView, Modal, modalVisibile, Pressable } from 'react-native';
 import { TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -15,6 +15,8 @@ import Moment from 'moment';
 import {getImage} from '../config/images'
 import DailyView from '../components/DailyView';
 import * as yup from 'yup';
+import { AntDesign } from '@expo/vector-icons';
+
 
 
 
@@ -30,26 +32,32 @@ import { getDatabase, ref, onValue, set, get, child, Database, connectDatabaseEm
 import App from '../App';
 // import { ref as sRef } from 'firebase/storage';
 
-function storeData(values, {resetForm}){
+
+
+// function storeData(values, {resetForm}, setModalVisible){
 
     
+//     // const [modalVisibile, setModalVisible] = React.useState(false)
+//     const db = getDatabase();
+//     const reference = ref(db, 'users/' + global.uid);
+//     push(reference,  {
+//         entry: values
+//     });
+//     console.log('dataset')
+//     resetForm(); 
+//     // setModalVisible(true)
 
-    const db = getDatabase();
-    const reference = ref(db, 'users/' + global.uid);
-    push(reference,  {
-        entry: values
-    });
-    console.log('dataset')
-    resetForm();
-
-    
-
-    
-}
+// }
 
     
 
 function Formiktest(props) {
+
+    const [modalVisibile, setModalVisible] = React.useState(false)
+
+    const [reasonText, setReasonText] = React.useState()
+
+    
 
     let formSchema = yup.object().shape({
         
@@ -62,6 +70,22 @@ function Formiktest(props) {
         
 
     // })
+
+    function storeData(values, {resetForm}){
+
+    
+        // const [modalVisibile, setModalVisible] = React.useState(false)
+        const db = getDatabase();
+        const reference = ref(db, 'users/' + global.uid);
+        push(reference,  {
+            entry: values
+        });
+        console.log('dataset')
+        resetForm();
+        setReasonText('');
+        setModalVisible(true)
+    
+    }
 
     
 
@@ -470,10 +494,10 @@ function Formiktest(props) {
     
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "jealous")}>
+                            onPress={() => setFieldValue("feeling", "bored")}>
                                 <Image style={styles.emotions} source={require('../assets/jealous.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.sad}>Jealous</Text>
+                            <Text style={styles.sad}>Bored</Text>
     
                         </View>
     
@@ -520,8 +544,8 @@ function Formiktest(props) {
                         style={styles.input}
                         onChangeText={handleChange("reason")}
                         maxLength={19}
-                        clearButtonMode="always"
-                        
+                        clearButtonMode="always"    
+                        value={reasonText}                    
                         
                     />
                 </View>
@@ -594,6 +618,23 @@ function Formiktest(props) {
             
 
             </Formik>
+
+            <Modal visible={modalVisibile} animationType="slide" transparent={true}>
+                    <View style={styles.center}>
+                    <View style={styles.modalView}>
+                        <Pressable onPress={() => setModalVisible(false)}>
+                            <Text style={styles.emotionText4}>x</Text>
+                        </Pressable>
+                        <View style={styles.center}>
+                            <AntDesign name='checkcircleo' size={125} color="lightgreen"/>
+                            <Text style={styles.emotionText5}>Entry Saved!</Text>
+                            <Text style={styles.emotionText4}>Have an amazing day :)</Text>
+                        </View>
+
+                    </View>
+                    </View>
+
+                </Modal>
             
 
 
@@ -822,7 +863,58 @@ const styles = StyleSheet.create({
 
         
         
-    }
+    }, 
+
+    modalView: {
+
+        marginTop: 160,
+        backgroundColor: colours.lightblue,
+        width: "80%",
+        borderRadius: 20,
+        padding: 15,
+      
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+
+      center:{
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+
+
+    emotionText4:{
+        fontFamily: 'Arial Rounded MT Bold',
+        // paddingTop: 20,
+        
+        paddingBottom: 10,
+        fontSize: 20,
+        // justifyContent: 'center',
+        fontWeight: 'bold',
+        textAlign: 'right',
+        color: colours.white,
+        
+    },
+
+    emotionText5:{
+        fontFamily: 'Arial Rounded MT Bold',
+        // paddingTop: 20,
+        paddingTop: 30,
+        paddingBottom: 10,
+        fontSize: 20,
+        // justifyContent: 'center',
+        fontWeight: 'bold',
+        textAlign: 'right',
+        color: colours.white,
+        
+    },
+    
 
 
 })
