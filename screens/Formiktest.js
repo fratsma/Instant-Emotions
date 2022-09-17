@@ -363,10 +363,10 @@ function Formiktest(props) {
     
                         <View style={styles.spacesBetween}>
                             <TouchableHighlight activeOpacity={1} underlayColor={colours.grey} 
-                            onPress={() => setFieldValue("feeling", "sympathetic")}>
+                            onPress={() => setFieldValue("feeling", "nervous")}>
                                 <Image style={styles.emotions} source={require('../assets/sympathetic.jpeg')}/>
                             </TouchableHighlight>
-                            <Text style={styles.straight}>Sympathy</Text>
+                            <Text style={styles.straight}>Nervous</Text>
     
                         </View>
     
@@ -546,7 +546,7 @@ function Formiktest(props) {
                         onChangeText={handleChange("reason")}
                         onChange={(e) => setReasonText(e.target.value)}
                         maxLength={19}
-                        clearButtonMode="always"    
+                        // clearButtonMode="always"    
                         value={reasonText}                    
                         
                     />
@@ -690,7 +690,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: colours.green,
         textAlign: 'center',
-        fontFamily: 'KohinoorBangla-Semibold',
+        fontFamily: 'Avenir',
         paddingTop: 3
     },
 
@@ -698,7 +698,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: colours.grey,
         textAlign: 'center',
-        fontFamily: 'KohinoorBangla-Semibold',
+        fontFamily: 'Avenir',
         paddingTop: 3
     },
 
@@ -706,7 +706,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: colours.red,
         textAlign: 'center',
-        fontFamily: 'KohinoorBangla-Semibold',
+        fontFamily: 'Avenir',
         paddingTop: 3
     },
 
@@ -847,8 +847,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: colours.danger,
         borderColor: colours.lightblue,
-        fontFamily: 'Avenir-Black',
-        fontSize: 25,
+        fontFamily: 'Avenir',
+        fontSize: 20,
         borderRadius: 15,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.5,

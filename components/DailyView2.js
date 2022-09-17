@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     },
 
     emotionSub:{
-        fontFamily: 'Avenir-Black',
+        fontFamily: 'Avenir',
         fontSize: 13,
         justifyContent: 'center',
         flex: 1

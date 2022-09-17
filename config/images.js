@@ -9,7 +9,7 @@ export function getImage(input){
         case "blissful": return require('../assets/blissful.jpeg');
         case "confused": return require('../assets/confused.jpeg');
         case "content": return require('../assets/content.jpeg');
-        case "dependable": return require('../assets/dependable.jpeg');
+        case "relaxed": return require('../assets/dependable.jpeg');
         case "down": return require('../assets/disappointed.jpeg');
         case "emotional": return require('../assets/emotional.jpeg');
         case "excited": return require('../assets/excited.jpeg');
@@ -18,7 +18,7 @@ export function getImage(input){
         case "happy": return require('../assets/happy.jpeg');
         case "humiliated": return require('../assets/humiliated.jpeg');
         case "hungry": return require('../assets/hungry.jpeg');
-        case "jealous": return require('../assets/jealous.jpeg');
+        case "bored": return require('../assets/jealous.jpeg');
         case "love": return require('../assets/love.jpeg');
         case "meh": return require('../assets/meh.jpeg');
         case "nostalgic": return require('../assets/nostalgic.jpeg');
@@ -32,7 +32,7 @@ export function getImage(input){
         case "shocked": return require('../assets/shocked.jpeg');
         case "shy": return require('../assets/shy.jpeg');
         case "stressed": return require('../assets/stressed.jpeg');
-        case "sympathetic": return require('../assets/sympathetic.jpeg');
+        case "nervous": return require('../assets/sympathetic.jpeg');
         case "tired": return require('../assets/tired2.jpg');
         case "unwell": return require('../assets/unwell.jpeg');
         case "upset": return require('../assets/upset.jpeg');
