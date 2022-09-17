@@ -32,7 +32,7 @@ function DailyView({itemImage, itemEmotion, itemReason, itemMood, itemTime}) {
 const styles = StyleSheet.create({
 
     emotionText:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 20,
         justifyContent: 'center',
         fontWeight: 'bold',
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     },
 
     emotionSub:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 15,
         justifyContent: 'center',
         flex: 1

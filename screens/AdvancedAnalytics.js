@@ -459,7 +459,7 @@ function AdvancedAnalytics(props) {
     return (
         <Screen style={styles.background}>
             <Text style={styles.mainText4}>
-                Instant Emotions
+                Analytics
             </Text>
 
 
@@ -632,7 +632,7 @@ const styles = StyleSheet.create({
       color: colours.danger,
       // fontFamily: 'Arial-BoldMT'
       // fontFamily: 'Helvetica Neue'
-      fontFamily: 'Arial Rounded MT Bold'
+      fontFamily: 'Avenir-Black'
       
   },
 
@@ -647,7 +647,7 @@ const styles = StyleSheet.create({
     color: colours.reallyGrey,
     // fontFamily: 'Arial-BoldMT'
     // fontFamily: 'Helvetica Neue'
-    fontFamily: 'Arial Rounded MT Bold',
+    fontFamily: 'Avenir-Black',
     color: colours.lightgrey,
     
 
@@ -663,7 +663,7 @@ mainText5:{
   color: colours.reallyGrey,
   // fontFamily: 'Arial-BoldMT'
   // fontFamily: 'Helvetica Neue'
-  fontFamily: 'Arial Rounded MT Bold',
+  fontFamily: 'Avenir-Black',
   color: colours.lightgrey,
   
 
@@ -681,7 +681,7 @@ mainText5:{
       fontWeight: 'bold', 
       textAlign: 'center',
       color: colours.danger,
-      fontFamily: 'Arial Rounded MT Bold',
+      fontFamily: 'Avenir-Black',
       marginTop: 20,
       marginBottom: 0,
   },
@@ -693,7 +693,7 @@ mainText5:{
     fontWeight: 'bold', 
     textAlign: 'center',
     color: colours.danger,
-    fontFamily: 'Arial Rounded MT Bold',
+    fontFamily: 'Avenir-Black',
     marginTop: 20,
     marginBottom: 0,
 },
@@ -703,7 +703,7 @@ mainText5:{
     fontWeight: 'bold', 
     textAlign: 'center',
     color: colours.lightgrey,
-    fontFamily: 'Arial Rounded MT Bold',
+    fontFamily: 'Avenir-Black',
     marginTop: 10,
     marginBottom: 0,
 },
@@ -818,7 +818,7 @@ whiteBackground:{
 },
 
 emotionText:{
-  fontFamily: 'Arial Rounded MT Bold',
+  fontFamily: 'Avenir-Black',
   paddingBottom: 10,
   fontSize: 17,
   justifyContent: 'center',
@@ -830,7 +830,7 @@ emotionText:{
 
 emotionText2:{
 
-  fontFamily: 'Arial Rounded MT Bold',
+  fontFamily: 'Avenir-Black',
   fontSize: 15,
   justifyContent: 'center',
   fontWeight: 'bold',
@@ -840,7 +840,7 @@ emotionText2:{
 },
 
 emotionText3:{
-  fontFamily: 'Arial Rounded MT Bold',
+  fontFamily: 'Avenir-Black',
   paddingTop: 20,
 
   paddingBottom: 10,
@@ -853,7 +853,7 @@ emotionText3:{
 },
 
 emotionText4:{
-  fontFamily: 'Arial Rounded MT Bold',
+  fontFamily: 'Avenir-Black',
   // paddingTop: 20,
 
   paddingBottom: 10,
@@ -864,6 +864,8 @@ emotionText4:{
   color: colours.white,
   
 },
+
+
 
 
 

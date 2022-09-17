@@ -55,7 +55,7 @@ function Formiktest(props) {
 
     const [modalVisibile, setModalVisible] = React.useState(false)
 
-    const [reasonText, setReasonText] = React.useState()
+    const [reasonText, setReasonText] = React.useState('')
 
     
 
@@ -71,10 +71,11 @@ function Formiktest(props) {
 
     // })
 
-    function storeData(values, {resetForm}){
+    function storeData(values, {resetForm}, e){
 
     
         // const [modalVisibile, setModalVisible] = React.useState(false)
+        // e.preventDefault()
         const db = getDatabase();
         const reference = ref(db, 'users/' + global.uid);
         push(reference,  {
@@ -543,6 +544,7 @@ function Formiktest(props) {
                     <TextInput 
                         style={styles.input}
                         onChangeText={handleChange("reason")}
+                        onChange={(e) => setReasonText(e.target.value)}
                         maxLength={19}
                         clearButtonMode="always"    
                         value={reasonText}                    
@@ -717,7 +719,7 @@ const styles = StyleSheet.create({
         color: colours.danger,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Arial Rounded MT Bold'
+        fontFamily: 'Avenir-Black'
         
     },
 
@@ -731,7 +733,7 @@ const styles = StyleSheet.create({
         color: colours.reallyGrey,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
 
         
     },
@@ -743,7 +745,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         paddingHorizontal: 20,
         
     },
@@ -831,7 +833,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         marginTop: 20,
         marginBottom: 0,
     },
@@ -845,7 +847,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: colours.danger,
         borderColor: colours.lightblue,
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 25,
         borderRadius: 15,
         shadowOffset: { width: 0, height: 2 },
@@ -890,7 +892,7 @@ const styles = StyleSheet.create({
 
 
     emotionText4:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         // paddingTop: 20,
         
         paddingBottom: 10,
@@ -903,7 +905,7 @@ const styles = StyleSheet.create({
     },
 
     emotionText5:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         // paddingTop: 20,
         paddingTop: 30,
         paddingBottom: 10,

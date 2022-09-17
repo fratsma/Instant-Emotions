@@ -93,7 +93,7 @@ function Analytics(props) {
     return (
         <Screen style={styles.background}>
             <Text style={styles.mainText4}>
-                Instant Emotions
+                Daily View
             </Text>
             {/* <Button title='heek' onPress={getData}/> */}
 
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
         color: colours.danger,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Arial Rounded MT Bold'
+        fontFamily: 'Avenir-Black'
         
     },
 
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
         color: colours.reallyGrey,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         
 
         
@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
     },
 
     emotionSub:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 15,
         justifyContent: 'center',
         flex: 1,
@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
     },
 
     emotionText:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         paddingBottom: 10,
         fontSize: 17,
         justifyContent: 'center',
@@ -323,7 +323,7 @@ const styles = StyleSheet.create({
     },
 
     emotionText2:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 15,
         justifyContent: 'center',
         fontWeight: 'bold',
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
     },
 
     emotionText3:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         paddingTop: 20,
 
         paddingBottom: 10,
@@ -346,7 +346,7 @@ const styles = StyleSheet.create({
     },
 
     emotionText4:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         // paddingTop: 20,
 
         paddingBottom: 10,
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
     },
 
     emotionSub:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 13,
         justifyContent: 'center',
         flex: 1

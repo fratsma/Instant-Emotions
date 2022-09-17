@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         color: colours.white,
         fontSize: 17,
         // textTransform: 'uppercase',
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontWeight: 'bold',
     }
 })

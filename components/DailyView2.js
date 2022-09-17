@@ -94,7 +94,7 @@ function DailyView(props) {
 const styles = StyleSheet.create({
 
     emotionText:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 20,
         justifyContent: 'center',
         fontWeight: 'bold',
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     },
 
     emotionSub:{
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 13,
         justifyContent: 'center',
         flex: 1

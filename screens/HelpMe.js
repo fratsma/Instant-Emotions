@@ -232,7 +232,7 @@ function HelpMe(props) {
         color: colours.danger,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Arial Rounded MT Bold'
+        fontFamily: 'Avenir-Black'
         
     },
 
@@ -246,7 +246,7 @@ function HelpMe(props) {
         color: colours.reallyGrey,
         // fontFamily: 'Arial-BoldMT'
         // fontFamily: 'Helvetica Neue'
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
 
         
     },
@@ -258,7 +258,7 @@ function HelpMe(props) {
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         paddingHorizontal: 20,
         
     },
@@ -346,7 +346,7 @@ function HelpMe(props) {
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         marginTop: 20,
         marginBottom: 0,
     },
@@ -360,7 +360,7 @@ function HelpMe(props) {
         textAlign: 'center',
         color: colours.danger,
         borderColor: colours.lightblue,
-        fontFamily: 'Arial Rounded MT Bold',
+        fontFamily: 'Avenir-Black',
         fontSize: 25,
         borderRadius: 15,
         shadowOffset: { width: 0, height: 2 },
