@@ -93,6 +93,7 @@ function Formiktest(props) {
     return (
         <Screen style={styles.background}>
             <Text style={styles.mainText4}>Instant Emotions</Text>
+            <Text style={styles.subText2}>Hey, how are you feeling?</Text>
 
 
 
@@ -114,6 +115,8 @@ function Formiktest(props) {
                     <>
                         
                     <ScrollView style={styles.scroller}>
+
+                    
                     <View style={styles.viewStyle}>
     
                         
@@ -630,7 +633,7 @@ function Formiktest(props) {
                         <View style={styles.center}>
                             <AntDesign name='checkcircleo' size={125} color="lightgreen"/>
                             <Text style={styles.emotionText5}>Entry Saved!</Text>
-                            <Text style={styles.emotionText4}>Have an amazing day :)</Text>
+                            <Text style={styles.emotionText4}>You got this :)</Text>
                         </View>
 
                     </View>
@@ -836,6 +839,18 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir-Black',
         marginTop: 20,
         marginBottom: 0,
+    },
+
+    subText2:{
+        fontSize: 20, 
+        paddingTop: 0,
+        paddingBottom: 5,
+        fontWeight: 'bold', 
+        textAlign: 'center',
+        color: colours.white,
+        fontFamily: 'Avenir-Black',
+        marginTop: -10,
+        marginBottom: 5,
     },
 
     input:{
