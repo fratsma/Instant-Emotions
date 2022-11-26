@@ -543,15 +543,15 @@ function Formiktest(props) {
                 </ScrollView>   
 
                 <SlidingUpPanel ref={_panel}
-                    draggableRange={{top: 380, bottom: 0}}
+                    draggableRange={{top: 480, bottom: 0}}
                 
                 >
 
                 
-                <KeyboardAvoidingView
+                {/* <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : "height"}
                     style={styles.container}
-    >
+    > */}
 
                 <View style={styles.whiteBackground}>
                     
@@ -629,7 +629,7 @@ function Formiktest(props) {
                 </View>
 
                 </View>
-                </KeyboardAvoidingView>
+                {/* </KeyboardAvoidingView> */}
 
                 </SlidingUpPanel>
           
@@ -688,7 +688,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         elevation: 1,
         shadowColor: colours.black,
-        borderRadius: 10
+        borderRadius: 10,
 
 
     },
@@ -773,7 +773,7 @@ const styles = StyleSheet.create({
 
     gap:{
         alignItems: 'center',
-        paddingBottom: 30,
+        paddingBottom: 80,
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.5,
         shadowRadius: 5,
@@ -837,20 +837,21 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         height: 100,
         justifyContent: "center",
-        marginBottom: 30,
+        marginBottom: 50,
     },
 
     viewScore:{
         flexDirection: "row",
         height: 70,
         justifyContent: "center",
+        marginBottom: 30,
 
     },
 
     subText:{
         fontSize: 20, 
         paddingTop: 0,
-        paddingBottom: 5,
+        paddingBottom: 10,
         fontWeight: 'bold', 
         textAlign: 'center',
         color: colours.danger,
@@ -895,6 +896,7 @@ const styles = StyleSheet.create({
 
     viewInput:{
         alignItems: 'center',
+        paddingBottom: 30,
 
         
         
